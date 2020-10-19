@@ -5,23 +5,24 @@
   - [2.1. TF-IDF](#21-tf-idf)
     - [2.1.1. TF](#211-tf)
     - [2.1.2. IDF](#212-idf)
-    - [2.1.3. IF-IDF](#213-if-idf)
-    - [2.1.4. python中如何进行调用](#214-python中如何进行调用)
-- [3. 数据集下载](#3-数据集下载)
-  - [3.1. 下载MNIST数据集出现的问题](#31-下载mnist数据集出现的问题)
-- [4. 数据预处理的相应操作](#4-数据预处理的相应操作)
-  - [4.1. 数据集以及测试集的划分问题](#41-数据集以及测试集的划分问题)
-  - [4.2. 数据归一化](#42-数据归一化)
-  - [4.3. 数据清洗](#43-数据清洗)
-- [5. 进行数据分析](#5-进行数据分析)
-  - [5.1. 数据线性回归](#51-数据线性回归)
-- [6. 进行评估预测](#6-进行评估预测)
-- [7. Scikit-learn 朴素贝叶斯](#7-scikit-learn-朴素贝叶斯)
-  - [7.1. GaussianNB](#71-gaussiannb)
-  - [7.2. MultinomialNB](#72-multinomialnb)
-  - [7.3. BernoulliNB](#73-bernoullinb)
-  - [7.4. 朴素贝叶斯的主要优缺点](#74-朴素贝叶斯的主要优缺点)
-- [8. 参考](#8-参考)
+  - [2.2. IF-IDF](#22-if-idf)
+  - [2.3. python中如何进行调用](#23-python中如何进行调用)
+- [3. 计算余弦相似度](#3-计算余弦相似度)
+- [4. 数据集下载](#4-数据集下载)
+  - [4.1. 下载MNIST数据集出现的问题](#41-下载mnist数据集出现的问题)
+- [5. 数据预处理的相应操作](#5-数据预处理的相应操作)
+  - [5.1. 数据集以及测试集的划分问题](#51-数据集以及测试集的划分问题)
+  - [5.2. 数据归一化](#52-数据归一化)
+  - [5.3. 数据清洗](#53-数据清洗)
+- [6. 进行数据分析](#6-进行数据分析)
+  - [6.1. 数据线性回归](#61-数据线性回归)
+- [7. 进行评估预测](#7-进行评估预测)
+- [8. Scikit-learn 朴素贝叶斯](#8-scikit-learn-朴素贝叶斯)
+  - [8.1. GaussianNB](#81-gaussiannb)
+  - [8.2. MultinomialNB](#82-multinomialnb)
+  - [8.3. BernoulliNB](#83-bernoullinb)
+  - [8.4. 朴素贝叶斯的主要优缺点](#84-朴素贝叶斯的主要优缺点)
+- [9. 参考](#9-参考)
 
 <!-- /TOC -->
 # 1. sklearn
@@ -41,32 +42,46 @@
 1. IDF：逆向文件频率。有些词可能在文本中频繁出现，但并不重要，也即信息量小，如is,of,that这些单词，这些单词在语料库中出现的频率也非常大，我们就可以利用这点，降低其权重。
     + IDF(w)=log_e(语料库的总文档数)/(语料库中词w出现的文档数)
 
-### 2.1.3. IF-IDF
+## 2.2. IF-IDF
 IF-IDF = TF * IDF
 
-### 2.1.4. python中如何进行调用
+## 2.3. python中如何进行调用
 ```py
 from sklearn.feature_extraction.text import TfidfVectorizer
 cv=TfidfVectorizer(binary=False,decode_error='ignore',stop_words='english')
 vec=cv.fit_transform(['hello world','this is a panda.'])#传入句子组成的list
 arr=vec.toarray()
 ```
-# 3. 数据集下载
 
-## 3.1. 下载MNIST数据集出现的问题
+# 3. 计算余弦相似度
+1. `pairwise_distances`函数是计算两个矩阵之间的余弦相似度
+2. `cosine_similarity`函数是计算多个向量之间的余弦相似度
+
+```py
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+
+m1 = np.mat([[0, 3, 2], [2, 5, 0], [3, 1, 4]])
+m1_similarity = cosine_similarity(m1)
+print(m1_similarity)
+```
+
+# 4. 数据集下载
+
+## 4.1. 下载MNIST数据集出现的问题
 1. <a href = "https://blog.csdn.net/rocwei1001/article/details/97278682">无法下载MNIST数据集</a>
 
-# 4. 数据预处理的相应操作
+# 5. 数据预处理的相应操作
 
-## 4.1. 数据集以及测试集的划分问题
+## 5.1. 数据集以及测试集的划分问题
 1. 使用`train_test_split`进行划分数据集
 2. `X_train,X_test,Y_train,Y_test = train_test_split(exam_X,exam_Y,train_size=.8)`:将原本数据集拆分成为训练集和测试集
 
-## 4.2. 数据归一化
+## 5.2. 数据归一化
 1. 使用`reshape()`函数来进行数据调整
     1. `reshape(-1,1)`
 
-## 4.3. 数据清洗
+## 5.3. 数据清洗
 ```py
 #通过read_csv来读取我们的目的数据集
 adv_data = pd.read_csv("C:/Users/Administrator/Desktop/Advertising.csv")
@@ -76,9 +91,9 @@ new_adv_data = adv_data.ix[:,1:]
 print('head:',new_adv_data.head(),'\nShape:',new_adv_data.shape)
 ``` 
 
-# 5. 进行数据分析
+# 6. 进行数据分析
 
-## 5.1. 数据线性回归
+## 6.1. 数据线性回归
 1. 以LinearRegression()为例，我们创建一个model，使用数据进行fit操作
 2. 获取运算结果:
     + 截距:`model.intercept`
@@ -91,14 +106,14 @@ plt.savefig("pairplot.jpg")
 plt.show()
 ```
 
-# 6. 进行评估预测
+# 7. 进行评估预测
 1. 我们导入数据进行预测:`model.predict(X)`
 
-# 7. Scikit-learn 朴素贝叶斯
+# 8. Scikit-learn 朴素贝叶斯
 1. 在Sklearn中一共有三个朴素贝叶斯的分类算法类，分别是GaussianNB、MultinomialNB、BernoulliNB。
     + 他们分别对应的是先验为高斯分布、多项式分布、伯努利分布的朴素贝叶斯。
 
-## 7.1. GaussianNB
+## 8.1. GaussianNB
 1. 主要参数是：先验概率priors
 2. 主要预测方法：
     1. predict:直接给出测试集的预测类别输出
@@ -108,7 +123,7 @@ plt.show()
     1. fit(X,Y):将相应的输入数据进行匹配
     2. partial_fit():这个方法一般用于数据量过大的时候，用来分词载入内存
 
-## 7.2. MultinomialNB
+## 8.2. MultinomialNB
 1. 主要参数:
     1. 参数alpha:无特殊需要，可以选择为1，调优时可以进行局部调整
     2. 布尔参数:fit_prior:表示是否要考虑先验概率,若为false则所有的样本类别输出有相同的先验概率。
@@ -120,12 +135,12 @@ false|无意义|P(Y=C<sub>k</sub>) = 1/k
 true|不填|P(Y=C<sub>k</sub>) = m<sub>k</sub>
 true|填|P(Y=C<sub>k</sub>) = class_prior
 
-## 7.3. BernoulliNB
+## 8.3. BernoulliNB
 1. 主要参数:
     1. 前三个参数和MultinomialNB相同
     2. binarize:处理二项分布，可以为数值或者null
 
-## 7.4. 朴素贝叶斯的主要优缺点
+## 8.4. 朴素贝叶斯的主要优缺点
 1. 优点:
     1. 朴素贝叶斯模型有稳定的分类效率。
     2. 小规模数据表现好，可以处理多分类任务，适合增量学习
@@ -136,7 +151,7 @@ true|填|P(Y=C<sub>k</sub>) = class_prior
     3. 先验 + 数据 -> 后验:有一定错误率
     4. 对于输入数据的表达形式比较敏感。
 
-# 8. 参考
+# 9. 参考
 1. <a href = "https://www.cnblogs.com/mengnan/p/9307648.html">sklearn文本特征提取——TfidVectorizer</a>
 2. <a href = "https://blog.csdn.net/feng_zhiyu/article/details/81952697">Python中的TfidVectorizer参数解析</a>
 3. <a href = "https://blog.csdn.net/weixin_40014576/article/details/79918819">Python实现多变量回归</a>

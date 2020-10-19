@@ -22,6 +22,7 @@ python Excel处理
     - [2.1.2. 行的操作](#212-行的操作)
     - [2.1.3. 列的操作](#213-列的操作)
     - [2.1.4. 单元格的操作](#214-单元格的操作)
+  - [2.2. 读取excel异常](#22-读取excel异常)
 - [3. 参考](#3-参考)
 
 <!-- /TOC -->
@@ -166,5 +167,23 @@ table.cell_value(rowx,colx)   #返回单元格中的数据
 table.cell_xf_index(rowx, colx)   # 暂时还没有搞懂
 ```
 
+## 2.2. 读取excel异常
+1. 执行异常如下
+
+```
+  File "E:\Python\lib\site-packages\xlrd\compdoc.py", line 426, in _locate_stream
+    raise CompDocError("%s corruption: seen[%d] == %d" % (qname, s, self.seen[s]))
+xlrd.compdoc.CompDocError: Workbook corruption: seen[2] == 4
+```
+
+2. 这个是主动抛出异常，可能是第三方库有问题，只要注释对应源码`compdoc.py`中的如下代码(426行)即可
+
+```py
+if self.seen[s]:
+	print("_locate_stream(%s): seen" % qname, file=self.logfile); dump_list(self.seen, 20, self.logfile)
+	raise CompDocError("%s corruption: seen[%d] == %d" % (qname, s, self.seen[s]))
+```
+
 # 3. 参考
 1. <a href = "https://www.cnblogs.com/insane-Mr-Li/p/9092619.html">python里面的xlrd模块详解（一）</a>
+2. <a href = "https://blog.csdn.net/HuangZhang_123/article/details/78717002">Python xlrd读取excel异常处理</a>
