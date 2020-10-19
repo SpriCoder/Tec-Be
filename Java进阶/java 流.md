@@ -49,3 +49,51 @@ Optional<Integer> sum = list.stream().map(Person::getAge).reduce(Integer::sum);
 ```
 
 4. 上述返回的是一个Optional对象，是一个容器类，表示一个值是否存在
+
+## 2.2. sorted()方法
+
+### 2.2.1. 自然排序
+
+```java
+public void natural() {
+    List<String> list = Arrays.asList("q", "a","b");
+    // 排序后输出
+    list.stream().sorted().forEach(System.out::println);
+    // a
+    // b
+    // q
+}
+```
+
+### 2.2.2. 定制排序
+```java
+@Data
+public class man{
+    private Integer loc;
+    private String dname;
+    private String deptno;
+}
+
+public void modify() {
+    List<String> deptList = new ArrayList<man>();
+    // 排序
+    deptList.stream().sorted((x,y) -> {
+        if(x.getDeptno().equals(y.getDeptno())) {
+            return x.getDname().compareTo(y.getDname());
+        }else {
+            return x.getLoc().compareTo(y.getLoc())
+        }
+    });
+    // 打印
+    deptList.stream().sorted((x,y) -> {
+        if(x.getDeptno().equals(y.getDeptno())) {
+            return x.getDname().compareTo(y.getDname());
+        }else {
+            return x.getLoc().compareTo(y.getLoc())
+        }
+    });
+}
+```
+
+# 3. 参考
+1. <a href = "https://jingyan.baidu.com/article/ac6a9a5e379c722b653eacbd.html">java8中Stream API如何排序数据</a>
