@@ -1,12 +1,12 @@
 Flask HTTP
 ---
 
-# request
+# 1. request
 1. request:flask中代表请求的request对象
 2. 作用:在视图函数中取出本次请求数据
 3. 包:`from flask import request`
 
-## 常用属性
+## 1.1. 常用属性
 | 属性    | 说明                     | 类型           |
 | ------- | ------------------------ | -------------- |
 | data    | 请求的数据，转换为字符串 | *              |
@@ -19,7 +19,7 @@ Flask HTTP
 | files   | 记录请求上传的文件       | *              |
 | json    | 记录请求的json数据       | json           |
 
-## 应用
+## 1.2. 应用
 ```py
 """获取客户端的请求"""
 @app.route("/request")
