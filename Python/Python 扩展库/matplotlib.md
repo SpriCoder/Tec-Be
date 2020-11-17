@@ -57,7 +57,6 @@
 1. 一个Dataframe
 
 ## 2.2. 绘制折线图
- 
 1. 可以保存图片`plt.savefig('name.格式')`
 ```python
 import matplotlib.pyplot as plt
@@ -73,6 +72,14 @@ t = np.arange(0.,4.,0.1)
 plt.plot(t,t,t,t+2,t,t**2)# 多组x,y联合解析
 ```
 3. 可以直接用Series进行绘图
+4. 绘制多条折线，只需要多次plot即可
+5. 部分参数扩展
+   1. marker = char：可以规定点的形状
+   2. label = string：可以规定图例
+   3. mfc(markerfacecolor):点的内部颜色
+   4. mec(markeredgecolor):点的边颜色
+   5. ms(markersize):点大小
+6. <a href = "https://matplotlib.org/api/pyplot_api.html">官方文档</a>
 
 ## 2.3. 绘制散点图Scatter
 1. 绘制方法`plt.plot(t,t,'o')`
