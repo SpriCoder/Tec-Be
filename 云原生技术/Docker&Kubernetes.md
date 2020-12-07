@@ -26,7 +26,7 @@ Lec02-Docker&Kubernetes
 7. 如果你依旧不清楚docker是什么，我们可以先把它当成一种轻量级“虚拟机”（尽管这么说是不对的）
 
 ### 1.1.2. Docker和VM的区别
-![](img/cpt02/1.png)
+![](img/docker/1.png)
 
 1. Docker相当于启动一个进程
 
@@ -40,7 +40,7 @@ Lec02-Docker&Kubernetes
     - 本地找不到的话，会从docker-hub上拉取
     - 更多参见课件
 
-![](img/cpt02/2.png)
+![](img/docker/2.png)
 
 2. image:类比Win10，container:运行Win10的进程
 3. `docker run -d -P daocloud.io/daocloud/dao-2048`
@@ -55,7 +55,7 @@ Lec02-Docker&Kubernetes
 5. `-P`是容器内部端口随机映射到主机的高端口。
 
 ## 1.3. Docker的架构设计
-![](img/cpt02/3.png)
+![](img/docker/3.png)
 
 - client:客户端
 - DOCKER_HOST:(daemon)
@@ -65,14 +65,14 @@ Lec02-Docker&Kubernetes
 - client和HOST:可以分布在不同的机器上，我们用的是一台机器
 - objects：Images + Containers
 
-![](img/cpt02/4.png)
+![](img/docker/4.png)
 
 - 上图是细节的架构图(Docker Daemon里面)
 - Docker Engineer: 编译器
 - containerd：Python的supervisor
 - runc: container
 
-![](img/cpt02/5.png)
+![](img/docker/5.png)
 
 - containerd是一个容器运行时，它可以管理完整的容器生命周期-从映像传输/存储到容器执行，监督和联网。
 - container-shim处理无头容器，这意味着一旦runc初始化容器，它将退出，将容器移交给充当中间人的container-shim。
@@ -332,7 +332,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 ### 1.5.3. Union file systems
 1. 分层的文件系统
 
-![](img/cpt02/6.png)
+![](img/docker/6.png)
 
 ### 1.5.4. Container format
 1. libcontainer/runc
@@ -358,12 +358,12 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 5. 网络场景
 6. 存储
 
-![](img/cpt02/7.png)
-![](img/cpt02/8.png)
+![](img/docker/7.png)
+![](img/docker/8.png)
 
 1. BorgMaster:控制平面
 
-![](img/cpt02/9.png)
+![](img/docker/9.png)
 
 - 目前的架构平面
 - Master节点
@@ -373,12 +373,12 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
   - Kuberlet
 
 ## 2.2. K8S架构描述
-![](img/cpt02/10.png)
+![](img/docker/10.png)
 
 - master会依赖于etcd
 - kube-proxy:一些信息通信(服务层的网络转发，利用)
 
-![](img/cpt02/11.png)
+![](img/docker/11.png)
 
 - 左下角我们可以将三角和五边形分别理解成前端和后端(不妥，其实不应该在一个POD中)
 - 用户准备启动APP descriptor
@@ -388,7 +388,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 - 多容器配置交给KUBERNETES，分步到整个集群上去(比如MYSQL + Python + Redis的多应用)
 - 同时Master会监视节点，如果挂了则会换一个节点部署
 
-![](img/cpt02/12.png)
+![](img/docker/12.png)
 
 - 正常一个POD只放一个主要业务，剩下放的是监视/日志等等
 
@@ -406,50 +406,50 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 ## 2.3. K8S的基本概念
 1. Phippy and Friends
 
-![](img/cpt02/13.png)
+![](img/docker/13.png)
 
 - 去动物园
 
-![](img/cpt02/14.png)
-![](img/cpt02/15.png)
+![](img/docker/14.png)
+![](img/docker/15.png)
 
 - 蓝色的小东西:松鼠(POD)
 
-![](img/cpt02/16.png)
-![](img/cpt02/17.png)
-![](img/cpt02/18.png)
+![](img/docker/16.png)
+![](img/docker/17.png)
+![](img/docker/18.png)
 
 - 如果失败了，会帮助回复
 
-![](img/cpt02/19.png)
-![](img/cpt02/20.png)
-![](img/cpt02/21.png)
+![](img/docker/19.png)
+![](img/docker/20.png)
+![](img/docker/21.png)
 
 - 涉密的通过Secrets存储
 
-![](img/cpt02/22.png)
-![](img/cpt02/23.png)
+![](img/docker/22.png)
+![](img/docker/23.png)
 
 - Deployment来恢复失败的部分
 - 滚动更新和发布
 
-![](img/cpt02/24.png)
-![](img/cpt02/25.png)
+![](img/docker/24.png)
+![](img/docker/25.png)
 
 - 秃鹫:DaemonSets(一对一，POD-node)
 
-![](img/cpt02/26.png)
-![](img/cpt02/27.png)
+![](img/docker/26.png)
+![](img/docker/27.png)
 
 - 需要流量分流的时候:Ingresses
 
-![](img/cpt02/28.png)
-![](img/cpt02/29.png)
+![](img/docker/28.png)
+![](img/docker/29.png)
 
 - CronJobs:定时任务(某一个时刻启动任务然后再干掉)
 
-![](img/cpt02/30.png)
-![](img/cpt02/31.png)
+![](img/docker/30.png)
+![](img/docker/31.png)
 
 - 自定义(CRD)：对KUBERNETES的扩展
 
@@ -460,7 +460,7 @@ kubectl run nginx --image=luksa/kubia --port=8080
 
 - 不同版本参数可能启动的是不同deployment或pod
 
-![](img/cpt02/32.png)
+![](img/docker/32.png)
 
 ```
 kubectl get pod
@@ -471,7 +471,7 @@ kubectl get deploy nginx -o yaml//查看状态信息
 
 - describe查看具体信息
 
-![](img/cpt02/33.png)
+![](img/docker/33.png)
 
 - 操作和运行过程:见图
 

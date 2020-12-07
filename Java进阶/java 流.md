@@ -66,6 +66,8 @@ public void natural() {
 ```
 
 ### 2.2.2. 定制排序
+> 请务必注意，如下的排序结果并不会直接映射到原列表中，需要通过赋值才可以。
+
 ```java
 @Data
 public class man{
@@ -77,15 +79,7 @@ public class man{
 public void modify() {
     List<String> deptList = new ArrayList<man>();
     // 排序
-    deptList.stream().sorted((x,y) -> {
-        if(x.getDeptno().equals(y.getDeptno())) {
-            return x.getDname().compareTo(y.getDname());
-        }else {
-            return x.getLoc().compareTo(y.getLoc())
-        }
-    });
-    // 打印
-    deptList.stream().sorted((x,y) -> {
+    deptList = deptList.stream().sorted((x,y) -> {
         if(x.getDeptno().equals(y.getDeptno())) {
             return x.getDname().compareTo(y.getDname());
         }else {

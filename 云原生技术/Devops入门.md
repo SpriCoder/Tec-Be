@@ -2,12 +2,12 @@ Lec04-Devops与测试
 ---
 
 # 1. 技术路线图
-![](img/cpt04/1.png)
+![](img/devops/1.png)
 
 1. PMP和ScrumMaster认证
 
 # 2. 自动化测试
-![](img/cpt04/2.png)
+![](img/devops/2.png)
 
 1. 企业级虚拟机
 2. Shell:要求比较高
@@ -28,34 +28,34 @@ Lec04-Devops与测试
 3. 太早进行是不好的(往往1.x版本是不稳定的)
 
 ## 2.3. 为什么选择Selenium?
-![](img/cpt04/3.png)
+![](img/devops/3.png)
 
 1. 基本上支持大部分的浏览器和技术栈
 2. Selenium模拟了用户操作，但是速度受限
 3. 本身通过JS完成实现
 4. WebDriver是代替人去操作的核心
 
-![](img/cpt04/4.png)
+![](img/devops/4.png)
 
 ## 2.4. RobotFrameWork
-![](img/cpt04/5.png)
-![](img/cpt04/6.png)
+![](img/devops/5.png)
+![](img/devops/6.png)
 
 ## 2.5. 测试过程
-![](img/cpt04/7.png)
-![](img/cpt04/8.png)
+![](img/devops/7.png)
+![](img/devops/8.png)
 
 ## 2.6. JMeter和Locast怎么选择？
 1. JMeter使用的更多
 
-![](img/cpt04/9.png)
+![](img/devops/9.png)
 
 2. Locast支持定制，JMeter则不支持
 
 # 3. Devops全链条
-![](img/cpt04/10.png)
+![](img/devops/10.png)
 
 ## 3.1. CI/CD工具
-![](img/cpt04/11.png)
+![](img/devops/11.png)
 
 1. Jerkins的插件非常多
