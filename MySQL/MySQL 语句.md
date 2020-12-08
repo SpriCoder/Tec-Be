@@ -118,10 +118,11 @@ DDL语句(数据定义语言)|作用
 + 向指定列中插入数据
 
 # 8. UPDATE 语句
-1. 用于修改表中的数据  
+1. 用于修改表中的数据，返回值为匹配到的行数。
 2. **语法**
->`UPDATE table_name SET field1 = new-value1,field2 = new-value2 [WHERE clause]`  
->其中列名称=新值可以多个同时赋值  
+
+> `UPDATE table_name SET field1 = new-value1,field2 = new-value2 [WHERE clause]`  
+> 其中列名称=新值可以多个同时赋值  
 
 # 9. DELETE 语句
 1. 用于删除表中的行  
