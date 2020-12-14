@@ -151,7 +151,7 @@ public class HelloForm extends HttpServlet {
     */
     public HelloForm() {
         super();
-        // TODO Auto-generated constructor stub
+        // Auto-generated constructor stub
     }
     /**
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -244,7 +244,7 @@ public class HelloForm extends HttpServlet {
     */
     public HelloForm() {
         super();
-        // TODO Auto-generated constructor stub
+        // Auto-generated constructor stub
     }
     /**
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
