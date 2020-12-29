@@ -100,9 +100,9 @@ public static void main(String[] args) {
 ### 1.3.2. 常用方法
 1. `int countTokens()`:返回nextToken方法被调用的次数。
 2. `boolean hasMoreTokens()`:返回是否还有分隔符。
-3. `boolean hasMoreElements()`:判断枚举 （Enumeration） 对象中是否还有数据。
+3. `boolean hasMoreElements()`:判断枚举 (Enumeration) 对象中是否还有数据。
 4. `String nextToken()`:返回从当前位置到下一个分隔符的字符串。
-5. `Object nextElement()`:返回枚举 （Enumeration） 对象的下一个元素。
+5. `Object nextElement()`:返回枚举 (Enumeration) 对象的下一个元素。
 6. `String nextToken(String delim)`:与 4 类似，以指定的分隔符返回结果。
 
 ### 1.3.3. 代码实现

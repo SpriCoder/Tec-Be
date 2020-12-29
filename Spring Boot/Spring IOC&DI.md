@@ -34,7 +34,7 @@ Spring IOC 和 DI
 ![](img/ioc/6.png)
 
 - 已然会有create的那一条线来进行依赖(必须要先创建)
-- 通过装配器来完成控制反转 IoC（Inversion of Control）。
+- 通过装配器来完成控制反转 IoC(Inversion of Control)。
 
 ![](img/ioc/7.png)
 

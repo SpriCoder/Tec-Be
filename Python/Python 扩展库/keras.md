@@ -57,7 +57,7 @@ results = model.evaluate(test_data, test_labels)
 3. Dense layer(全连接层，稠密层)
 4. 最后一层和输出节点连接，实用sigmoid激活函数
 5. 编译模型:
-    1. loss:指的是损失函数(binary_crossentropy在处理概率上表现更好——它测量概率分布之间的“距离”，或者测量真实分布和预测之间的“距离”)
+    1. loss:指的是损失函数(binary_crossentropy在处理概率上表现更好——它测量概率分布之间的"距离"，或者测量真实分布和预测之间的"距离")
 
 
 # 4. 参考

@@ -38,8 +38,8 @@ Tomcat 和 Servlet原理
 ![](img/Tomcat&Servlet/2.png)
 
 ## 2.2. service() ⽅法
-1. service() ⽅法是执⾏实际任务的主要⽅法。Servlet 容器（即 Web 服务器）调⽤ service() ⽅法来处理来⾃客户端（浏览器）的请求，并把格式化的响应写回给客户端。
-2. 每次服务器接收到⼀个 Servlet 请求时，服务器会产⽣⼀个新的线程并调⽤服务。service() ⽅法检查HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调⽤ doGet、doPost、doPut，doDelete 等⽅法。
+1. service() ⽅法是执⾏实际任务的主要⽅法。Servlet 容器(即 Web 服务器)调⽤ service() ⽅法来处理来⾃客户端(浏览器)的请求，并把格式化的响应写回给客户端。
+2. 每次服务器接收到⼀个 Servlet 请求时，服务器会产⽣⼀个新的线程并调⽤服务。service() ⽅法检查HTTP 请求类型(GET、POST、PUT、DELETE 等)，并在适当的时候调⽤ doGet、doPost、doPut，doDelete 等⽅法。
 3. 下⾯是该⽅法的特征：
 ```java
 public void service(ServletRequest request,

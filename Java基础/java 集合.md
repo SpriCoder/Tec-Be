@@ -1,6 +1,6 @@
 <!-- TOC -->
 
-- [1. 哈希（类似于 python dict)](#1-哈希类似于-python-dict)
+- [1. 哈希(类似于 python dict)](#1-哈希类似于-python-dict)
 - [2. List类：](#2-list类)
   - [2.1. 常见的list的初始化方式](#21-常见的list的初始化方式)
   - [2.2. 集合关系运算](#22-集合关系运算)
@@ -16,7 +16,7 @@
 <!-- /TOC -->
 **集合**
 
-# 1. 哈希（类似于 python dict)  
+# 1. 哈希(类似于 python dict)  
 1. HashMap 是一个用于储存Key-Value键对的集合。每一个键值对叫Entry,分散存储在一个数组中，作为一个主干，初始值null
  
 # 2. List类：  

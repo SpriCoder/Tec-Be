@@ -187,7 +187,7 @@ plt.show()
     + radius  :控制饼图半径，默认值为1；
     + counterclock ：指定指针方向；布尔值，可选参数，默认为：True，即逆时针。将值改为False即可改为顺时针。
     + wedgeprops ：字典类型，可选参数，默认值：None。参数字典传递给wedge对象用来画一个饼图。例如：wedgeprops={'linewidth':3}设置wedge线宽为3。
-    + textprops ：设置标签（labels）和比例文字的格式；字典类型，可选参数，默认值为：None。传递给text对象的字典参数。
+    + textprops ：设置标签(labels)和比例文字的格式；字典类型，可选参数，默认值为：None。传递给text对象的字典参数。
     + center ：浮点类型的列表，可选参数，默认值：(0,0)。图标中心位置。
     + frame ：布尔类型，可选参数，默认值：False。如果是true，绘制带有表的轴框架。
     + rotatelabels ：布尔类型，可选参数，默认为：False。如果为True，旋转每个label到指定的角度。
@@ -252,7 +252,7 @@ plt.rcParams['font.family'] = 'SimHei'
 ```
 
 ### 2.5.3. 参考
-1. <a href = "https://blog.csdn.net/proplume/article/details/80768705?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task">Python可视化: 颜色 图例 实例（matplotlib饼状图）总结</a>
+1. <a href = "https://blog.csdn.net/proplume/article/details/80768705?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task">Python可视化: 颜色 图例 实例(matplotlib饼状图)总结</a>
 
 ## 2.6. 绘制堆叠图
 1. plt.stackplot(x,y, labels=labels, colors=pal, alpha=0.7 )

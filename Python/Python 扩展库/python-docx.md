@@ -48,7 +48,7 @@ def chg_font(obj,fontname = '仿宋',size = None):
 
 distance = Inches(0.3)
 
-sec = doc.sections[0]# sections对应文档中的“节”
+sec = doc.sections[0]# sections对应文档中的"节"
 sec.left_margin = distance # 以下依次设置左、右、上、下页面边距
 sec.right_margin = distance
 sec.top_margin = distance sec.bottom_margin = distance sec.page_width =Inches(12)    #设置页面宽度
@@ -75,7 +75,7 @@ chg_font(run,fontname='微软雅黑', size=Pt(12))  #设置字体和字号
 1. 创建表格对象
 ```python
 tab =doc.add_table(rows=4,cols=4)   #添加一个4行4列的空表
-cell=tab.cell(1,3)  #获取某单元格对象（从0开始索引）
+cell=tab.cell(1,3)  #获取某单元格对象(从0开始索引)
 ```
 2. 向单元格中添加单行文本
 ```python

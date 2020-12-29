@@ -181,7 +181,7 @@ DDL语句(数据定义语言)|作用
 `ALTER TABLE testalter_tbl RENAME TO alter_tbl;`|用于修改数据表的名称
 
 ## 12.1. 参考
-<a href = "http://c.biancheng.net/view/2433.html">MySQL修改数据表（ALTER TABLE语句）</a>
+<a href = "http://c.biancheng.net/view/2433.html">MySQL修改数据表(ALTER TABLE语句)</a>
 
 # 13. JOIN
 

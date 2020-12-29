@@ -89,7 +89,7 @@ user.age = ${random.int}
 8. java:comp/env里的JNDI属性
 9. JVM系统属性
 10. 操作系统环境变量
-11. 随机生成的带random.* 前缀的属性（在设置其他属性时，可以应用他们，比如${random.long}）
+11. 随机生成的带random.* 前缀的属性(在设置其他属性时，可以应用他们，比如${random.long})
 12. 应用程序以外的application.properties或者appliaction.yml文件
 13. 打包在应用程序内的application.properties或者appliaction.yml文件
 14. 通过@PropertySource标注的属性源

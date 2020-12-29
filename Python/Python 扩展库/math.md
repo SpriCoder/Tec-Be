@@ -1,7 +1,7 @@
 # 1. math库
 
 ## 1.1. pow()方法
-1. pow() 方法返回 x<sup>y</sup>（x的y次方） 的值。
+1. pow() 方法返回 x<sup>y</sup>(x的y次方) 的值。
 2. 语法:
 ```python
 import math

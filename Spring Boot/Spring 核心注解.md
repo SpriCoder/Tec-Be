@@ -173,7 +173,7 @@ public class NamePointcut {
    2. 也没有写入META-INF/services/的文件
 3. 问题:没有上述两种操作，Tomcat如何扫描到指定的类呢？
    1. Byte Code Engineering Library(BCEL),这是字节码操纵框架的之一。
-   2. webConfig() 在调用`processServletContainerInitializers()`时记录下注解的类名，然后在Step 4和Step 5中都来到`processAnnotationsStream`这个方法，使用BCEL的`ClassParser`在字节码层面读取了/`WEB-INF/classes`和某些jar（应该可以在叫做fragments的概念中指定）中class文件的超类名和实现的接口名，判断是否与记录的注解类名相同，若相同再通过`org.apache.catalina.util.Introspection`类load为Class对象，最后保存起来，于Step 11中交给`org.apache.catalina.core.StandardContext`，也就是tomcat实际调用`ServletContainerInitializer.onStartup()`的地方。
+   2. webConfig() 在调用`processServletContainerInitializers()`时记录下注解的类名，然后在Step 4和Step 5中都来到`processAnnotationsStream`这个方法，使用BCEL的`ClassParser`在字节码层面读取了/`WEB-INF/classes`和某些jar(应该可以在叫做fragments的概念中指定)中class文件的超类名和实现的接口名，判断是否与记录的注解类名相同，若相同再通过`org.apache.catalina.util.Introspection`类load为Class对象，最后保存起来，于Step 11中交给`org.apache.catalina.core.StandardContext`，也就是tomcat实际调用`ServletContainerInitializer.onStartup()`的地方。
 
 ### 4.5.1. 参考
 <a href = "https://www.cnblogs.com/feixuefubing/p/11593411.html">Java SPI、servlet3.0与@HandlesTypes源码分析</a>
@@ -495,9 +495,9 @@ public class MainApplication {
 ```
 (*)星号：可以理解为每的意思，每秒，每分，每天，每月，每年...
 (?)问号：问号只能出现在日期和星期这两个位置。
-(-)减号：表达一个范围，如在小时字段中使用“10-12”，则表示从10到12点，即10,11,12
-(,)逗号：表达一个列表值，如在星期字段中使用“1,2,4”，则表示星期一，星期二，星期四
-(/)斜杠：如：x/y，x是开始值，y是步长，比如在第一位（秒） 0/15就是，从0秒开始，每15秒，最后就是0，15，30，45，60    另：*/y，等同于0/y
+(-)减号：表达一个范围，如在小时字段中使用"10-12"，则表示从10到12点，即10,11,12
+(,)逗号：表达一个列表值，如在星期字段中使用"1,2,4"，则表示星期一，星期二，星期四
+(/)斜杠：如：x/y，x是开始值，y是步长，比如在第一位(秒) 0/15就是，从0秒开始，每15秒，最后就是0，15，30，45，60    另：*/y，等同于0/y
 ```
 3. 实例:
 ```
@@ -608,13 +608,13 @@ public class EmployeeService
    3. TransactionDefinition.PROPAGATION_NEVER：以非事务方式运行，如果当前存在事务，则抛出异常。
 
 ### 10.3.2. 正确的设置@Transactional 的 rollbackFor 属性
-1. 默认情况下，如果在事务中抛出了未检查异常（继承自 RuntimeException 的异常）或者 Error，则 Spring 将回滚事务；除此之外，Spring 不会回滚事务。
+1. 默认情况下，如果在事务中抛出了未检查异常(继承自 RuntimeException 的异常)或者 Error，则 Spring 将回滚事务；除此之外，Spring 不会回滚事务。
 2. 如果在事务中抛出其他类型的异常，并期望 Spring 能够回滚事务，可以指定 rollbackFor。例：
     + @Transactional(propagation= Propagation.REQUIRED,rollbackFor= MyException.class)
 3. 通过分析 Spring 源码可以知道，若在目标方法中抛出的异常是 rollbackFor 指定的异常的子类，事务同样会回滚。
 
 ### 10.3.3. @Transactional 只能应用到 public 方法才有效
-1. 只有@Transactional 注解应用到 public 方法，才能进行事务管理。这是因为在使用 Spring AOP 代理时，Spring 在调用在图 1 中的 TransactionInterceptor 在目标方法执行前后进行拦截之前，DynamicAdvisedInterceptor（CglibAopProxy 的内部类）的的 intercept 方法或 JdkDynamicAopProxy 的 invoke 方法会间接调用 AbstractFallbackTransactionAttributeSource（Spring 通过这个类获取表 1. @Transactional 注解的事务属性配置属性信息）的 computeTransactionAttribute 方法。
+1. 只有@Transactional 注解应用到 public 方法，才能进行事务管理。这是因为在使用 Spring AOP 代理时，Spring 在调用在图 1 中的 TransactionInterceptor 在目标方法执行前后进行拦截之前，DynamicAdvisedInterceptor(CglibAopProxy 的内部类)的的 intercept 方法或 JdkDynamicAopProxy 的 invoke 方法会间接调用 AbstractFallbackTransactionAttributeSource(Spring 通过这个类获取表 1. @Transactional 注解的事务属性配置属性信息)的 computeTransactionAttribute 方法。
 
 ### 10.3.4. 避免 Spring 的 AOP 的自调用问题
 1. 在 Spring 的 AOP 代理下，只有目标方法由外部调用，目标方法才由 Spring 生成的代理对象来管理，这会造成自调用问题。若同一类中的其他没有@Transactional 注解的方法内部调用有@Transactional 注解的方法，有@Transactional 注解的方法的事务被忽略，不会发生回滚。见清单 5 举例代码展示。

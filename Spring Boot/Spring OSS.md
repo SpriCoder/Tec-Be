@@ -142,7 +142,7 @@ public class UploadController {
 
     /**
      * 删除文件
-     * @param url url为全部文件名（无前缀）xxx.jpg
+     * @param url url为全部文件名(无前缀)xxx.jpg
      * @return
      */
     @PostMapping("/delete")

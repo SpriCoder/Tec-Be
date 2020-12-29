@@ -19,4 +19,4 @@ feign:
 ```
 
 # 2. 参考
-1. <a href = "https://blog.csdn.net/qq_40369944/article/details/93194159">springcloud feign设置超时时间（Spring boot2.0及以上）</a>
+1. <a href = "https://blog.csdn.net/qq_40369944/article/details/93194159">springcloud feign设置超时时间(Spring boot2.0及以上)</a>

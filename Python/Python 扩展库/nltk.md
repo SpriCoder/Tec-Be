@@ -62,8 +62,8 @@ nltk.download('wordnet')
 
 ### 1.4.1. 上位词和下位词
 ```py
-hypernyms() # 上位（父类）
-hyponyms() # 下位（子类）
+hypernyms() # 上位(父类)
+hyponyms() # 下位(子类)
 ```
 
 ### 1.4.2. 同义词和反义词

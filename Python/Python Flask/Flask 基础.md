@@ -21,4 +21,4 @@ if __name__ == '__main__':
 ```
 
 # 3. 参考
-1. <a href = "https://www.cnblogs.com/Sunzz/p/10956837.html">Flask入门很轻松 （一）</a>
+1. <a href = "https://www.cnblogs.com/Sunzz/p/10956837.html">Flask入门很轻松 (一)</a>

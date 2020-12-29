@@ -54,7 +54,7 @@ algo.fit(trainset)
 2. 然后使用`predict()`方法来预测评分
 
 # 2. 使用自定义数据集
-1. surprise库有一组内建 数据集，但当然可以使用自定义数据集。加载评分数据集可以从文件（例如csv文件）或pandas数据框中完成。无论哪种方式，都需要定义一个Reader对象来解析文件或数据框。
+1. surprise库有一组内建 数据集，但当然可以使用自定义数据集。加载评分数据集可以从文件(例如csv文件)或pandas数据框中完成。无论哪种方式，都需要定义一个Reader对象来解析文件或数据框。
 2. 从csv文件中加载数据集，需要使用`load_from_file()`方法
 ```py
 from surprise import BaselineOnly
@@ -70,7 +70,7 @@ cross_validate(BaselineOnly(), data, verbose=True) #现在可以使用这个数�
 
 ## 2.1. 使用交叉验证迭代器
 1. 对于交叉验证，可以用 cross_validate() 完成所有的工作。但是为了更好地控制，可以实例化交叉验证迭代器，并使用且迭代器的 split() 方法和算法的 test() 方法，对每一折进行预测。
-2. 下面是一个栗子，我们使用了一个经典的K-fold交叉验证程序，其中包含数据被分为3份（3折交叉验证）：
+2. 下面是一个栗子，我们使用了一个经典的K-fold交叉验证程序，其中包含数据被分为3份(3折交叉验证)：
 ```py
 from surprise import SVD
 from surprise import Dataset
@@ -90,7 +90,7 @@ for trainset, testset in kf.split(data):
 3. 也可以使用其他交叉验证迭代器，比如LeaveOneOut或ShuffleSplit。
 
 ## 2.2. 使用GridSerachCV调整算法参数
-1. 该`cross_validate()`函数针对给定的一组交叉验证参数报告过程的准确性度量（如RMSE、MAE这些）。如果你想知道哪个参数组合能够产生最好的结果，那么这个 `GridSearchCV`类就可以解决问题。给定一个dict参数，这个类会尝试所有的参数组合，并报告任何准确性度量（对不同分割进行平均的）的最佳参数。它受到`scikit-learn`的`GridSearchCV`的启发。
+1. 该`cross_validate()`函数针对给定的一组交叉验证参数报告过程的准确性度量(如RMSE、MAE这些)。如果你想知道哪个参数组合能够产生最好的结果，那么这个 `GridSearchCV`类就可以解决问题。给定一个dict参数，这个类会尝试所有的参数组合，并报告任何准确性度量(对不同分割进行平均的)的最佳参数。它受到`scikit-learn`的`GridSearchCV`的启发。
 2. 接下来这个例子我们尝试了SVD算法的参数 `n_epochs`, `lr_all` 和 `reg_all` 的不同值。
 ```py
 from surprise import SVD
@@ -138,5 +138,5 @@ results_df = pd.DataFrame.from_dict(gs.cv_results)
 ```
 
 # 3. 参考
-1. <a href = "https://blog.csdn.net/yuxeaotao/article/details/79851576">surprise库使用（一）——使用内置数据集</a>
-2. <a herf = "https://blog.csdn.net/yuxeaotao/article/details/79852254">surprise库使用（二）——使用自定义数据集</a>
+1. <a href = "https://blog.csdn.net/yuxeaotao/article/details/79851576">surprise库使用(一)——使用内置数据集</a>
+2. <a herf = "https://blog.csdn.net/yuxeaotao/article/details/79852254">surprise库使用(二)——使用自定义数据集</a>

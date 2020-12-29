@@ -6,24 +6,24 @@ Lec02-Docker&Kubernetes
 # 1. Docker部分
 
 ## 1.1. Docker的前世今生
-1. 2013 年 3 月 15 日，在加利福尼亚州圣克拉拉召开的 Python 开发者大会上， dotCloud 的创始人兼首席执行官 Solomon Hvkes 在一场仅五分钟的微型演讲中， 首次提出了 Docker 这一概念。当时，仅约 40 人（除 dotCloud 内部人员）获得了使用 Docker 的机会。
+1. 2013 年 3 月 15 日，在加利福尼亚州圣克拉拉召开的 Python 开发者大会上， dotCloud 的创始人兼首席执行官 Solomon Hvkes 在一场仅五分钟的微型演讲中， 首次提出了 Docker 这一概念。当时，仅约 40 人(除 dotCloud 内部人员)获得了使用 Docker 的机会。
 
 ### 1.1.1. Docker是什么
 1. 开发人员角度
-    1. 提供了一种“全新”的应用发布模式
+    1. 提供了一种"全新"的应用发布模式
     2. 自带了Provision工具
     3. 提供了一致的打包方式
     4. 存储分层，增量式修改
 2. 运维人员角度
-    1. “轻量级”的虚拟机
-    2. 像管理“app”一样管理后端服务
+    1. "轻量级"的虚拟机
+    2. 像管理"app"一样管理后端服务
     3. 一种独立进程管理方案
     4. 可以对指定的进程设定限制
 3. Docker 是一种 Linux 容器管理引擎
 4. Docker 是最火热的开源容器化项目之一
 5. Docker 是一种实现打包、输送、运行任意应用的容器解决方案
 6. docker实际是对应了一种现代的虚拟化技术。
-7. 如果你依旧不清楚docker是什么，我们可以先把它当成一种轻量级“虚拟机”（尽管这么说是不对的）
+7. 如果你依旧不清楚docker是什么，我们可以先把它当成一种轻量级"虚拟机"(尽管这么说是不对的)
 
 ### 1.1.2. Docker和VM的区别
 ![](img/docker/1.png)
@@ -341,13 +341,13 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 1. 一个一个微服务需要交互的时候如何编排
 
 ## 2.1. KUBERNETES的由来
-1. Kubernetes（在希腊语意为“舵手”或“驾驶员”）由Joe Beda、Brendan Burns和Craig McLuckie创立，并由其他谷歌工程师，包括Brian Grant和Tim Hockin等进行加盟创作，并由谷歌在2014年首次对外宣布 。该系统的开发和设计都深受谷歌的Borg系统的影响，其许多顶级贡献者之前也是Borg系统的开发者。在谷歌内部，Kubernetes的原始代号曾经是Seven，即星际迷航中的Borg(博格人)。Kubernetes标识中舵轮有七个轮辐就是对该项目代号的致意。
+1. Kubernetes(在希腊语意为"舵手"或"驾驶员")由Joe Beda、Brendan Burns和Craig McLuckie创立，并由其他谷歌工程师，包括Brian Grant和Tim Hockin等进行加盟创作，并由谷歌在2014年首次对外宣布 。该系统的开发和设计都深受谷歌的Borg系统的影响，其许多顶级贡献者之前也是Borg系统的开发者。在谷歌内部，Kubernetes的原始代号曾经是Seven，即星际迷航中的Borg(博格人)。Kubernetes标识中舵轮有七个轮辐就是对该项目代号的致意。
 2. KUBERNETES的图标有七个辐条，现实中的是8个辐条
 
 ### 2.1.1. 什么是KUBERNETES
-1. Kubernetes（常简称为K8s）是用于自动部署、扩展和管理容器化（containerized）应用程序的开源系统。
-2. 该系统由Google设计并捐赠给Cloud Native Computing Foundation（今属Linux基金会）来使用。
-3. 它旨在提供“跨主机集群的自动部署、扩展以及运行应用程序容器的平台”。
+1. Kubernetes(常简称为K8s)是用于自动部署、扩展和管理容器化(containerized)应用程序的开源系统。
+2. 该系统由Google设计并捐赠给Cloud Native Computing Foundation(今属Linux基金会)来使用。
+3. 它旨在提供"跨主机集群的自动部署、扩展以及运行应用程序容器的平台"。
 4. 它支持一系列容器工具, 包括Docker等。
 
 ### 2.1.2. K8S的发展及演进

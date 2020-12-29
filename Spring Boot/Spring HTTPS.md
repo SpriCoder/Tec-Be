@@ -27,7 +27,7 @@ Spring HTTPS
 
 ## 1.2. 阿里云等证书
 1. 阿里云、腾讯云等购买了服务器都可以申请免费SSL证书，免费证书大致是够用的
-2. <a href = "https://blog.csdn.net/She_lock/article/details/80984992">阿里云免费ssl证书（PFX格式证书）安装</a>
+2. <a href = "https://blog.csdn.net/She_lock/article/details/80984992">阿里云免费ssl证书(PFX格式证书)安装</a>
 
 ## 1.3. 证书的位置
 1. 放置到项目的根目录上。

@@ -64,7 +64,7 @@ UNIQUE [indexName] (username(length))
    4. 最左前缀原则：
       1. 以最左边的为起点的任何连续的索引都可以被匹配上
       2. 一般在建立联合索引的时候，我们将where子句中使用的最频繁的一列放在最左边，增强扩展性
-   5. 联合索引的本质：如果建立（a,b,c）的联合索引的，相当于建立了（a）的单列索引、（a,b）的联合索引、（a,b,c）的联合索引。
+   5. 联合索引的本质：如果建立(a,b,c)的联合索引的，相当于建立了(a)的单列索引、(a,b)的联合索引、(a,b,c)的联合索引。
    6. 如果WHERE中条件时OR的情况下，加索引没有作用。
    7. 联合索引比对每个列分别建立索引更有优势，索引越多，那么占据的磁盘空间就越大，更新数据就会变慢，应将严格的索引放在前面，这样子筛选的力度会更大，效率更高。
 
@@ -77,7 +77,7 @@ UNIQUE [indexName] (username(length))
 1. 使用ALTER命令添加和删除索引  
 有四种方式添加索引：
    + `ALTER TABLE tbl_name ADD PRIMARY KEY (column_list)`:该语句添加一个主键，这意味着索引值必须是唯一的，且不能为NULL。
-   + `ALTER TABLE tbl_name ADD UNIQUE index_name (column_list)`:这条语句创建索引的值必须是唯一的（除了NULL外，NULL可能会出现多次）。
+   + `ALTER TABLE tbl_name ADD UNIQUE index_name (column_list)`:这条语句创建索引的值必须是唯一的(除了NULL外，NULL可能会出现多次)。
    + `ALTER TABLE tbl_name ADD INDEX index_name (column_list)`:添加普通索引，索引值可出现多次。
    + `ALTER TABLE tbl_name ADD FULLTEXT index_name (column_list)`:该语句指定了索引为 FULLTEXT ，用于全文索引。
 2. 注意：

@@ -88,5 +88,5 @@ with tf.Session() as sess:
 
 # 3. 处理csv文件中遇到的问题
 1. 首先对于非数值类数据我们要首先确定它的编码方式，并且在open的过程中指定encoding的编码格式防止出现乱码。
-2. 调整csv文件的编码格式:以下以使用excel为例，我们可以“文件”->“保存”->“Web选项”->“编码”
+2. 调整csv文件的编码格式:以下以使用excel为例，我们可以"文件"->"保存"->"Web选项"->"编码"
 3. 参考:<a href = "https://jingyan.baidu.com/article/14bd256e8509a9bb6d261239.html">如何改变excel文件编码</a>

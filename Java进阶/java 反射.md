@@ -428,9 +428,9 @@ public class ReflectDemo {
      * Demo8: 通过Java反射机制得到类加载器信息
      *
      * 在java中有三种类类加载器。[这段资料网上截取]
-     1）Bootstrap ClassLoader 此加载器采用c++编写，一般开发中很少见。
-     2）Extension ClassLoader 用来进行扩展类的加载，一般对应的是jre\lib\ext目录中的类
-     3）AppClassLoader 加载classpath指定的类，是最常用的加载器。同时也是java中默认的加载器。
+     1)Bootstrap ClassLoader 此加载器采用c++编写，一般开发中很少见。
+     2)Extension ClassLoader 用来进行扩展类的加载，一般对应的是jre\lib\ext目录中的类
+     3)AppClassLoader 加载classpath指定的类，是最常用的加载器。同时也是java中默认的加载器。
      *
      * @throws ClassNotFoundException
      */

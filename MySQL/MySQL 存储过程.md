@@ -321,4 +321,4 @@ b3. efore Insert on test1 是指每次向test1插入数据之前，触发
 # 4. 参考
 1. <a href = "https://www.runoob.com/w3cnote/mysql-stored-procedure.html">MySQL 存储过程</a>
 2. <a href = "https://www.cnblogs.com/bobi-PHP-blog/p/7501301.html">Mysql过程</a>
-3. <a href = "https://www.cnblogs.com/zjoe-life/p/10650378.html">MySQL存储过程（PROCEDURE）（一）</a>
+3. <a href = "https://www.cnblogs.com/zjoe-life/p/10650378.html">MySQL存储过程(PROCEDURE)(一)</a>

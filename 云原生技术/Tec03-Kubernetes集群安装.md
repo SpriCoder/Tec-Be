@@ -131,7 +131,7 @@ add-apt-repository \
 ```
 5. 查看更新情况并更新表单:`apt-get update`
 6. 安装docker:`apt-get install docker-ce docker-ce-cli containerd.io`
-      1. 问题:`docker安装报错“Package 'docker-ce' has no installation candidate”`
+      1. 问题:`docker安装报错"Package 'docker-ce' has no installation candidate"`
       2. 尝试:`apt-get update`和`apt-get upgrade`(用时较长，慎用)
 7. 为当前用户授权:
 ```

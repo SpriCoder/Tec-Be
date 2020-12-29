@@ -95,5 +95,5 @@ IDEA 使用经验
 
 # 16. 参考
 1. <a href = "https://blog.csdn.net/qq_35246620/article/details/54705071">详解IDEA 的 添加jar包</a>
-2. <a href = "https://blog.csdn.net/lz710117239/article/details/104175842">java开发工具（1）你真的会用IDEA么？（上）</a>
-3. <a href = "https://blog.csdn.net/lz710117239/article/details/104224149">java开发工具（2）你真的会用IDEA么？（中）</a>
+2. <a href = "https://blog.csdn.net/lz710117239/article/details/104175842">java开发工具(1)你真的会用IDEA么？(上)</a>
+3. <a href = "https://blog.csdn.net/lz710117239/article/details/104224149">java开发工具(2)你真的会用IDEA么？(中)</a>

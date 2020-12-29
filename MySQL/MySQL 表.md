@@ -25,7 +25,7 @@
 命令|描述
 --|--
 `SELECT VERSION()`|服务器版本信息
-`SELECT DATABASE()`|当前数据库名（或者返回空）
+`SELECT DATABASE()`|当前数据库名(或者返回空)
 `SELECT USER()`|当前用户名
 `SHOW STATUS`|服务器状态
 `SHOW VARIABLES`|服务器配置变量
@@ -37,7 +37,7 @@
 
 ## 2.3. 重复数据
 1. 防止出现重复数据:  
-把某些字段声明为`PRIMARY KEY（主键）`或者`UNIQUE（唯一）`来保证某一个字段的唯一性。
+把某些字段声明为`PRIMARY KEY(主键)`或者`UNIQUE(唯一)`来保证某一个字段的唯一性。
 >双主键需要保证那个键值不为null
 2. 统计重复数据的步骤
    + 确定哪一行的数据有可能重复

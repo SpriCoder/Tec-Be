@@ -67,7 +67,7 @@ temp_file.png 22061 18211
 with zipfile.ZipFile('demo.zip','r') as zzz:
     zzz.extract('file1.txt',target_place)
 # 把压缩包里的file1.txt解压到当前目录
-# 如果压缩包里出现中文，则需要进行转码（所以在用Python压缩文件和解压的时候最好不要出现中文路径和文件名）
+# 如果压缩包里出现中文，则需要进行转码(所以在用Python压缩文件和解压的时候最好不要出现中文路径和文件名)
 ```
 
 ## 5.2. 全部文件解压缩

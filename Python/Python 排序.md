@@ -98,4 +98,4 @@ print(sorted(s, key=attrgetter('grade'), reverse=True))       # now sort on prim
 1. 对于浮点数的排序，使用`locale.strxfrm()`作为key函数，或者`locale.strcoll()`作为对比函数。
 
 # 3. 参考
-1. <a href = "https://www.cnblogs.com/harrymore/p/9460532.html">Python：如何排序（sort）</a>
+1. <a href = "https://www.cnblogs.com/harrymore/p/9460532.html">Python：如何排序(sort)</a>

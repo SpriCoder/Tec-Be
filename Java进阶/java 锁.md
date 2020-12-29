@@ -94,7 +94,7 @@ public void set() {
 1. 公平锁是指多个线程按照申请锁的顺序来获取锁。
 
 ### 3.1.1. AQS(AbstractQueuedSynchronizer)
-1. `AbstractQueuedSynchronizer`为实现依赖于先进先出 (FIFO) 等待队列的阻塞锁定和相关同步器（信号量、事件，等等）提供一个框架。
+1. `AbstractQueuedSynchronizer`为实现依赖于先进先出 (FIFO) 等待队列的阻塞锁定和相关同步器(信号量、事件，等等)提供一个框架。
 2. 此类的设计目标是成为依靠单个原子 int 值来表示状态的大多数同步器的一个有用基础。
 3. 子类必须定义更改此状态的受保护方法，并定义哪种状态对于此对象意味着被获取或被释放。
 4. 假定这些条件之后，此类中的其他方法就可以实现所有排队和阻塞机制。但只是为了获得同步而只追踪使用 getState()、setState(int) 和 compareAndSetState(int, int) 方法来操作以原子方式更新的 int 值。
@@ -107,7 +107,7 @@ public void set() {
 # 4. 锁的设计:分段锁
 1. 分段锁其实是一种锁的设计方式。
 2. 对于`ConcurrentHashMap`而言，其并发的实现就是通过分段锁的形式来实现高效的并发操作。
-3. 以`ConcurrentHashMap`为例，其中的分段锁称为`Segment`，它即类似于`HashMap`的结构，即内部拥有一个`Entry`数组，数组中的每个元素又是一个链表；同时又是一个`ReentrantLock`（`Segment`继承了`ReentrantLock`）。
+3. 以`ConcurrentHashMap`为例，其中的分段锁称为`Segment`，它即类似于`HashMap`的结构，即内部拥有一个`Entry`数组，数组中的每个元素又是一个链表；同时又是一个`ReentrantLock`(`Segment`继承了`ReentrantLock`)。
 4. 当需要put元素的时候，并不是对整个`hashmap`进行加锁，而是先通过`hashcode`来知道他要放在哪一个分段中，然后对这个分段进行加锁，所以当多线程put的时候，只要不是放在一个分段中，就实现了真正的并行的插入。
 5. 但是，在统计size的时候，可就是获取hashmap全局信息的时候，就需要获取所有的分段锁才能统计。
 6. 分段锁的设计目的是**细化锁的粒度**，当操作不需要更新整个数组的时候，就仅仅针对数组中的一项进行加锁操作。

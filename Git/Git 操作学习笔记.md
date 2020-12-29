@@ -37,7 +37,7 @@ by stormbroken
    3. `git push URL`：向远程仓库进行提交
 3. 查看结果：
    1. `git status`:用于实施的掌控仓库的状态
-   2. `git diff`：用于查看具体修改了什么内容（相比于上次）
+   2. `git diff`：用于查看具体修改了什么内容(相比于上次)
 4. 版本回退：
    1. `git log`：用于查看历史记录，版本信息等。可以添加`--pretty=oneline`参数来格式化其形式为版本号+注释。
    2. `git reset --hard HEAD^`：  
@@ -80,7 +80,7 @@ by stormbroken
 命令名称|作用
 --|--
 `git remote name URL`|添加远程仓库  
-`git push -u 仓库名 分支名`|将**分支**推向仓库（第一次需要全部，用于关联，之后可以直接`git push`
+`git push -u 仓库名 分支名`|将**分支**推向仓库(第一次需要全部，用于关联，之后可以直接`git push`
 `git remote rm 仓库名`|删除远程仓库
 `git clone URL`|克隆一个本地仓库
 

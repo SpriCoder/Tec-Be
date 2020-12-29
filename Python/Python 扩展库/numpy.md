@@ -160,4 +160,4 @@ D = (np.mat(A))*(np.mat(B)) # 执行矩阵运算
 ```
 
 # 4. 参考
-1. <a href = "https://blog.csdn.net/zenghaitao0128/article/details/78715140">python中np.multiply（）、np.dot（）和星号（*）三种乘法运算的区别</a>
+1. <a href = "https://blog.csdn.net/zenghaitao0128/article/details/78715140">python中np.multiply()、np.dot()和星号(*)三种乘法运算的区别</a>

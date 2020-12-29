@@ -29,8 +29,8 @@ public class StoryController {
 }
 ```
 1. @Controller对应表现层的Bean。这里用RestController，默认类中的方法都会以**json**的格式返回给前端。
-2. 使用@Controller注解标识StoryController之后，就表示要把StoryController交给Spring容器管理，在Spring容器中会存在一个名字为“storyController”的bean。
-3. 如果@Controller不指定名称，则默认的bean名字为这个类的类名首字母小写，如果指定名称【@Controller(value=“StoryController”)】或者【@Controller(“StoryController”)】，则使用value作为bean的名字。
+2. 使用@Controller注解标识StoryController之后，就表示要把StoryController交给Spring容器管理，在Spring容器中会存在一个名字为"storyController"的bean。
+3. 如果@Controller不指定名称，则默认的bean名字为这个类的类名首字母小写，如果指定名称【@Controller(value="StoryController")】或者【@Controller("StoryController")】，则使用value作为bean的名字。
 
 ## 1.2. RequestMapping
 ```java
@@ -53,18 +53,18 @@ public class StoryController {
 ## 1.3. RequestParam
 ```java
 @RestController
-@RequestMapping(“/story”)
+@RequestMapping("/story")
 public class StoryController {
     @Autowired
     private StoryService storyService;
     /*** 交换两个story*/
-    @PostMapping(“/exchange”)
+    @PostMapping("/exchange")
     public ResultVO<Story> exchangeById(@RequestParam int src_id,@RequestParam int tar_id){…}
 }
 ```
 1. @RequestParam从request里面取参数值。
 使用http://IP:port/story/exchange?src_id=num1&tar_id=num2访问，将num1和num2传递赋值给src_id和tar_id
-2. Eg.@PostMapping(“/url”) 等同于@RequestMapping(value = "/url",method = RequestMethod.POST)
+2. Eg.@PostMapping("/url") 等同于@RequestMapping(value = "/url",method = RequestMethod.POST)
 
 ## 1.4. PathVariable
 ```java
@@ -74,7 +74,7 @@ public ResultVO<List<Story>> getByTask(@PathVariable int taskId){…}
 ```
 1. @PathVariable映射url片段到java方法的参数。
 2. Eg.使用http://IP:port/story/list/num访问，num将作为参数传递给taskId
-3. Eg.@GetMapping(“/url”) 等同于
+3. Eg.@GetMapping("/url") 等同于
 @RequestMapping(value = "/url",method = RequestMethod.GET)
 4. @PathVariable 支持三种参数
     + name 指定绑定参数的名称，要跟URL上面的一样
@@ -94,21 +94,21 @@ public ResultVO<Story> createStory(@RequestBody StoryVO storyInput){…}
 4. 前端使用ajax访问方式如下示例
 ```js
 var data = {
-    “taskId”: $(“#taskId”).val(),
-    “name”: $(“#name”).val(),
-    “storyPoint”: $(“#storyPoint”).val(),
-    “priority”: $(“#priority”).val(),
-    “description”: 
-$(“#description”).val(),
-    “posId”: $(“#posId”).val(),
-    “acceptance”:
-$(“#acceptance”).val(),
-    “releaseId”: $(“#iteration”).val(),
+    "taskId": $("#taskId").val(),
+    "name": $("#name").val(),
+    "storyPoint": $("#storyPoint").val(),
+    "priority": $("#priority").val(),
+    "description": 
+$("#description").val(),
+    "posId": $("#posId").val(),
+    "acceptance":
+$("#acceptance").val(),
+    "releaseId": $("#iteration").val(),
 }
 $.ajax({
-    type: “POST”,
-    url: “/story/create”,
-    dataType:“json”,
+    type: "POST",
+    url: "/story/create",
+    dataType:"json",
     contentType : ‘application/json’,
     data:JSON.stringify(data),
     success: function (data) {…}

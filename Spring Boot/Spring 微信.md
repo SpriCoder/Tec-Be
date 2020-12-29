@@ -97,7 +97,7 @@ public class WeiXinCommonUtil {
     @Autowired
     private HttpRequestUtil httpRequestUtil;
 
-    // 获取access_token的接口地址（GET） 限2000（次/天）
+    // 获取access_token的接口地址(GET) 限2000(次/天)
     private static String accessTokenUrl = "https://api.weixin.qq.com/cgi-bin/token?" +
             "grant_type=client_credential&appid=APPID&secret=APPSECRET";
     private static String code2SessionUrl= "https://api.weixin.qq.com/sns/jscode2session?" +
@@ -182,7 +182,7 @@ public class HttpRequestUtil {
      * 发起https请求并获取结果
      *
      * @param requestUrl    请求地址
-     * @param requestMethod 请求方式（GET、POST）
+     * @param requestMethod 请求方式(GET、POST)
      * @param outputStr     提交的数据
      * @return JSONObject(通过JSONObject.get  (key)的方式获取json对象的属性值)
      */
@@ -205,7 +205,7 @@ public class HttpRequestUtil {
             httpUrlConn.setDoOutput(true);
             httpUrlConn.setDoInput(true);
             httpUrlConn.setUseCaches(false);
-            // 设置请求方式（GET/POST）
+            // 设置请求方式(GET/POST)
             httpUrlConn.setRequestMethod(requestMethod);
 
             if ("GET".equalsIgnoreCase(requestMethod)) httpUrlConn.connect();

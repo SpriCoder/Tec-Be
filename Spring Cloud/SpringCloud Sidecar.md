@@ -301,5 +301,5 @@ public interface SideCarClient{
 1. 请务必注意被调用服务是不是支持通过POST的方式完成调用，比如flask没有写的话默认是只支持Get
 
 # 3. 参考
-1. <a href = "https://blog.csdn.net/pierre_/article/details/105587621">SpringCloud通过Sidecar整合异构平台微服务（Python Flask）</a>
+1. <a href = "https://blog.csdn.net/pierre_/article/details/105587621">SpringCloud通过Sidecar整合异构平台微服务(Python Flask)</a>
 2. <a href = "https://www.jianshu.com/p/e970b9a4e61a">springcloud使用 sidecar实现跨语言微服务调用</a>

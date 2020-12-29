@@ -21,7 +21,7 @@ java_加密
 
 # 2. 普遍使用的三种加密方式
 1. 使用位运算符，将加密后的数据转换成16进制
-2. 使用格式化方式，将加密后的数据转换成16进制（推荐）
+2. 使用格式化方式，将加密后的数据转换成16进制(推荐)
 3. 使用算法，将加密后的数据转换成16进制
 
 # 3. 加密例子
@@ -37,7 +37,7 @@ import java.security.NoSuchAlgorithmException;
 public class EncryptionUtil {
 	/**
 	 * @param source 需要加密的字符串
-	 * @param hashType 加密类型 （MD5 和 SHA）
+	 * @param hashType 加密类型 (MD5 和 SHA)
 	 * @return
 	 */
 	public static String getHash(String source, String hashType) {
@@ -70,7 +70,7 @@ public class EncryptionUtil {
 		return null;
 	}
 	/** @param source 需要加密的字符串
-	 * @param hashType  加密类型 （MD5 和 SHA）
+	 * @param hashType  加密类型 (MD5 和 SHA)
 	 * @return
 	 */
 	public static String getHash2(String source, String hashType) {
@@ -89,7 +89,7 @@ public class EncryptionUtil {
 		return null;
 	}
 	/** @param source 需要加密的字符串
-	 * @param hashType  加密类型 （MD5 和 SHA）
+	 * @param hashType  加密类型 (MD5 和 SHA)
 	 * @return
 	 */
 	public static String getHash3(String source, String hashType) {

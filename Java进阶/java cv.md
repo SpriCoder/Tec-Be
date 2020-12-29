@@ -31,7 +31,7 @@ java cv
  * 获取视频时长，单位为秒
  *
  * @param video 源视频文件
- * @return 时长（s）
+ * @return 时长(s)
  */
 public static long getVideoDuration(File video) {
     long duration = 0L;
