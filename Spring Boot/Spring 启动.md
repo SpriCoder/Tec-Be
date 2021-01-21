@@ -29,4 +29,4 @@ Spring boot 项目启动
 13. 正常情况下，遍历执行`SpringApplicationRunListener的finished()`方法、(如果整个过程出现异常，则依然调用所有`SpringApplicationRunListener`的`finished()`方法，只不过这种情况下会将异常信息一并传入处理)
 
 # 2. 参考
-1. <a href = "https://pppppkun.github.io/2019/10/25/SpringBoot入门之启动原理解析/"></a>
+1. <a href = "https://pppppkun.github.io/2019/10/25/SpringBoot入门之启动原理解析/">SpringBoot入门之启动原理解析</a>

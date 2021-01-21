@@ -2,6 +2,17 @@ Spring Python
 ---
 1. 在使用Spring Boot的过程中，难免会遇到需要调用Python的问题，这时候我们有多种选择
 
+<!-- TOC -->
+
+- [1. 选择JPython](#1-选择jpython)
+  - [1.1. pom配置](#11-pom配置)
+  - [1.2. 直接执行Python](#12-直接执行python)
+  - [1.3. 执行Python文件中的方法](#13-执行python文件中的方法)
+  - [1.4. 执行Python文件中的主方法](#14-执行python文件中的主方法)
+- [2. 选择发起网络请求](#2-选择发起网络请求)
+
+<!-- /TOC -->
+
 # 1. 选择JPython
 1. 是一种方法，但是当调用比较复杂的时候会有一定的问题
 2. <a href = "https://www.jianshu.com/p/cefdaccd3fd3">jpython的使用(Java调用python脚本)</a>

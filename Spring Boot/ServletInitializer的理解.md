@@ -1,6 +1,22 @@
 ServeletIntialzer的理解
 ---
 
+<!-- TOC -->
+
+- [1. SpringInitializer](#1-springinitializer)
+  - [1.1. 首先了解WebApplicationInitializer](#11-首先了解webapplicationinitializer)
+  - [1.2. 自己实例化相同的功能](#12-自己实例化相同的功能)
+- [2. @HandlesTypes](#2-handlestypes)
+- [3. 对SpringBootServletInitializer的理解](#3-对springbootservletinitializer的理解)
+  - [3.1. 不同的容器](#31-不同的容器)
+  - [3.2. servlet 3.0+ 规则](#32-servlet-30-规则)
+  - [3.3. 外部Tomcat启动的流程与原理](#33-外部tomcat启动的流程与原理)
+- [4. 深入了解SpringBootServletInitializer](#4-深入了解springbootservletinitializer)
+- [5. 扩展SpringBootServletInitializer](#5-扩展springbootservletinitializer)
+- [6. 参考](#6-参考)
+
+<!-- /TOC -->
+
 # 1. SpringInitializer
 1. 先来看代码:
 ```java

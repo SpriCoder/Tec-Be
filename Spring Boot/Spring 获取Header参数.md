@@ -1,5 +1,14 @@
 Spring 获取Header参数
 ---
+
+<!-- TOC -->
+
+- [1. 方法一:对应的部分加入@RequestHeader获取](#1-方法一对应的部分加入requestheader获取)
+- [2. 方法二:类级别注入HttpServletRequest](#2-方法二类级别注入httpservletrequest)
+- [3. 参考](#3-参考)
+
+<!-- /TOC -->
+
 # 1. 方法一:对应的部分加入@RequestHeader获取
 ```java
 @Controller

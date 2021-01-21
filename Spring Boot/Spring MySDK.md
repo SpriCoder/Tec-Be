@@ -3,6 +3,24 @@ Spring MySDK
 1. 将自己写好的部分封装，作为SDK给其他部分使用
 2. Spring 版本均为2.3.1
 
+<!-- TOC -->
+
+- [1. mysdk 项目](#1-mysdk-项目)
+  - [1.1. 创建项目](#11-创建项目)
+  - [1.2. 创建MySDKSource类](#12-创建mysdksource类)
+  - [1.3. 创建MySDKService类](#13-创建mysdkservice类)
+  - [1.4. 创建MySDKAutoConfiguration类](#14-创建mysdkautoconfiguration类)
+  - [1.5. 打包](#15-打包)
+- [2. 创建mysdk-test项目](#2-创建mysdk-test项目)
+  - [2.1. 修改pom文件，添加刚刚打包好的项目](#21-修改pom文件添加刚刚打包好的项目)
+  - [2.2. 修改MysdkTestApplication文件](#22-修改mysdktestapplication文件)
+  - [2.3. 测试运行](#23-测试运行)
+    - [2.3.1. 报错：找不到Bean](#231-报错找不到bean)
+    - [2.3.2. 报错:没有成功自动装配](#232-报错没有成功自动装配)
+    - [2.3.3. 成功运行效果](#233-成功运行效果)
+
+<!-- /TOC -->
+
 # 1. mysdk 项目
 1. MysdkApplication没有修改
 2. 目录结构

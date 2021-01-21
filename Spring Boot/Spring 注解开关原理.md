@@ -1,6 +1,17 @@
 Spring 注解开关原理
 ---
 
+<!-- TOC -->
+
+- [1. 如果完成自动化配置](#1-如果完成自动化配置)
+- [2. ImportSelector的使用](#2-importselector的使用)
+  - [2.1. CoreContentService](#21-corecontentservice)
+  - [2.2. CoreContentConfiguration](#22-corecontentconfiguration)
+- [3. ImportSelector在Spring Boot中使用](#3-importselector在spring-boot中使用)
+- [4. 参考](#4-参考)
+
+<!-- /TOC -->
+
 # 1. 如果完成自动化配置
 1. 定义一个Annotation，让使用了这个Annotaion的应用程序自动化地注入一些类或者做一些底层的事情。
 2. 我们使用`@Import`注解配合一个配置类来完成上面的事情。
