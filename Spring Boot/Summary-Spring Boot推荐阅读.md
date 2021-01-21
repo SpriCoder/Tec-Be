@@ -1,6 +1,7 @@
 Summary-Spring Boot推荐阅读方式
 ---
-本部分所有的资料均为手工整理，出自课堂、CSDN等多渠道，难免出现纰漏，请多谅解。
+1. 本部分所有的资料均为手工整理，出自课堂、CSDN等多渠道，难免出现纰漏，请多谅解。
+2. 如果觉得有用点个star和Follow再走
 
 # 1. Spring Boot 入门
 1. [Spring boot 基础](Spring%20boot%20基础.md)
