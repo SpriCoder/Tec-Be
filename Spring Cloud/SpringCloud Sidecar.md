@@ -4,7 +4,7 @@ SpringCloud Sidecar
 
 
 
-# 1. Spring Cloud 集成 Sidecar 整合异构平台微服务s
+# 1. Spring Cloud 集成 Sidecar 整合异构平台微服务
 1. 在Spring Cloud的微服务架构体系中，我们可以通过Sidecar来实现整合Python、Go等其他语言平台的微服务。
 
 ## 1.1. Sidecar的主要特点
