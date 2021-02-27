@@ -41,8 +41,10 @@
 - [5. squarify](#5-squarify)
 - [6. Seaborn](#6-seaborn)
   - [6.1. heatmap](#61-heatmap)
-- [7. matplotlib.pyploy(plt)的常见方法等介绍](#7-matplotlibpyployplt的常见方法等介绍)
-- [8. Matplotlib中的中文乱码解决](#8-matplotlib中的中文乱码解决)
+- [7. 问题](#7-问题)
+  - [7.1. matplotlib.pyploy(plt)的常见方法等介绍](#71-matplotlibpyployplt的常见方法等介绍)
+  - [7.2. Matplotlib中的中文乱码解决](#72-matplotlib中的中文乱码解决)
+  - [7.3. 图例放在外侧保存时显示不完整问题解决](#73-图例放在外侧保存时显示不完整问题解决)
 
 <!-- /TOC -->
 # 1. Matplotlib绘图基础
@@ -313,31 +315,31 @@ plt.show()
 3. 标记和符号类似MATLAB
 4. 使用hatch来确定填充模块问题
 
-符号/线条|颜色/描述
---|--
-b|blue
-g|green
-r|red
-c|cyan
-m|magenta
-y|yellow
-k|black
-w|white
-'-'|solid
-'--'|dashed
-'-.'|dash_dot
-':'|dotted
-'None'|draw nothing
-''|draw nothing
-' '|draw nothing
-"o"|circle
-"v"|triangle_down
-"s"|square
-"p"|pentagon
-"*"|star
-"h"|hexagon1
-"+"|plus
-"D"|diamond
+| 符号/线条 | 颜色/描述     |
+| --------- | ------------- |
+| b         | blue          |
+| g         | green         |
+| r         | red           |
+| c         | cyan          |
+| m         | magenta       |
+| y         | yellow        |
+| k         | black         |
+| w         | white         |
+| '-'       | solid         |
+| '--'      | dashed        |
+| '-.'      | dash_dot      |
+| ':'       | dotted        |
+| 'None'    | draw nothing  |
+| ''        | draw nothing  |
+| ' '       | draw nothing  |
+| "o"       | circle        |
+| "v"       | triangle_down |
+| "s"       | square        |
+| "p"       | pentagon      |
+| "*"       | star          |
+| "h"       | hexagon1      |
+| "+"       | plus          |
+| "D"       | diamond       |
 
 4. 具体可以通过help进行查看
 5. markersize是上述标记的大小
@@ -454,18 +456,23 @@ df.plot(kind = 'pie',subplots = True,autopct = '%.2f'，marker = 'v')# 饼状图
 1. 热图:反映的是一些数据的热度。
     + <a href = "https://www.jianshu.com/p/363bbf6ec335">Python可视化：Seabon库热力图使用进阶</a>
 
-# 7. matplotlib.pyploy(plt)的常见方法等介绍
-方法名|方法|部分参数注解
---|--|--
-plot()|绘制直线图|各个变量
-show()|展示图，将已经绘制好的图片显示出来|-
-scatter()|绘制散点图|各个变量
-xlim()|设置x轴的上下限|元组[a,b]表示从a到b
-ylim()|设置y轴的上下限|元组[a,b]表示从a到b
-legend()|为图像加上图例|<a href = "https://blog.csdn.net/qq_33221533/article/details/81431264">详情</a>
-title(str)|添加表的名称|-
-xlabel(str)|添加x轴的名称|-
-ylabel(str)|添加y轴的名称|-
+# 7. 问题
 
-# 8. Matplotlib中的中文乱码解决
+## 7.1. matplotlib.pyploy(plt)的常见方法等介绍
+| 方法名      | 方法                               | 部分参数注解                                                                    |
+| ----------- | ---------------------------------- | ------------------------------------------------------------------------------- |
+| plot()      | 绘制直线图                         | 各个变量                                                                        |
+| show()      | 展示图，将已经绘制好的图片显示出来 | -                                                                               |
+| scatter()   | 绘制散点图                         | 各个变量                                                                        |
+| xlim()      | 设置x轴的上下限                    | 元组[a,b]表示从a到b                                                             |
+| ylim()      | 设置y轴的上下限                    | 元组[a,b]表示从a到b                                                             |
+| legend()    | 为图像加上图例                     | <a href = "https://blog.csdn.net/qq_33221533/article/details/81431264">详情</a> |
+| title(str)  | 添加表的名称                       | -                                                                               |
+| xlabel(str) | 添加x轴的名称                      | -                                                                               |
+| ylabel(str) | 添加y轴的名称                      | -                                                                               |
+
+## 7.2. Matplotlib中的中文乱码解决
 1. 我们可以在绘制图片的时候显式的指定字体。
+
+## 7.3. 图例放在外侧保存时显示不完整问题解决
+<a href = "https://blog.csdn.net/Poul_henry/article/details/88311964">Python_matplotlib图例放在外侧保存时显示不完整问题解决</a>

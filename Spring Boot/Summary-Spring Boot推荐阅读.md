@@ -1,4 +1,4 @@
-Summary-Spring BooSpring%20t推荐阅读方式
+Summary-Spring Boot推荐阅读方式
 ---
 1. 本部分所有的资料均为手工整理，出自课堂、CSDN等多渠道，难免出现纰漏，请多谅解。
 2. 如果觉得有用点个star和Follow再走
