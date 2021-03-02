@@ -29,76 +29,78 @@ java 反射
 3. 问题:反射不是所有情况下都适用的，存在以下情况:在层层调用后在最终返回结果的地方对应用的权限进行了校验，对于没有权限的应用的返回值使用**缺省值**，否则返回实际值起到保护用户的隐私目的。
 
 # 3. 反射机制的相关类
-类名|相关类
---|--
-Class|代表类的实体，在运行的java应用程序中代表类和接口
-Field|代表类的成员变量(类的属性)
-Methods|代表类的方法
-Constructor|代表类的构造方法
+| 类名        | 相关类                                           |
+| ----------- | ------------------------------------------------ |
+| Class       | 代表类的实体，在运行的java应用程序中代表类和接口 |
+| Field       | 代表类的成员变量(类的属性)                       |
+| Methods     | 代表类的方法                                     |
+| Constructor | 代表类的构造方法                                 |
 
 ## 3.1. Class类
 1. Class代表类的实体，在运行的Java应用程序中表示类和接口。在这个类中提供了很多有用的方法，这里对他们简单的分类介绍。
 
 ### 3.1.1. 获取类相关的方法
-方法|用途
---|--
-asSubclass(Class<U> clazz)|把传递的类的对象转换成代表其子类的对象
-Cast|把对象转换成代表类或是接口的对象
-getClassLoader()|获得类的加载器
-getClasses()|返回一个数组，数组中包含该类中所有公共类和接口类的对象
-getDeclaredClasses()|返回一个数组，数组中包含该类中所有类和接口类的对象
-forName(String className)|根据类名返回类的对象
-getName()|获得类的完整路径名字
-newInstance()|创建类的实例
-getPackage()|获得类的包
-getSimpleName()|获得类的名字
-getSuperclass()|获得当前类继承的父类的名字 getInterfaces()|获得当前类实现的类或是接口
+| 方法                       | 用途                                                   |
+| -------------------------- | ------------------------------------------------------ |
+| asSubclass(Class<U> clazz) | 把传递的类的对象转换成代表其子类的对象                 |
+| Cast                       | 把对象转换成代表类或是接口的对象                       |
+| getClassLoader()           | 获得类的加载器                                         |
+| getClasses()               | 返回一个数组，数组中包含该类中所有公共类和接口类的对象 |
+| getDeclaredClasses()       | 返回一个数组，数组中包含该类中所有类和接口类的对象     |
+| forName(String className)  | 根据类名返回类的对象                                   |
+| getName()                  | 获得类的完整路径名字                                   |
+| newInstance()              | 创建类的实例                                           |
+| getPackage()               | 获得类的包                                             |
+| getSimpleName()            | 获得类的名字                                           |
+| getSuperclass()            | 获得当前类继承的父类的名字 getInterfaces()             | 获得当前类实现的类或是接口 |
 
 ### 3.1.2. 获得类中属性相关的方法
-方法|用途
---|--
-getConstructor(Class...<?> parameterTypes)|获得该类中与参数类型匹配的公有构造方法
-getConstructors()|获得该类的所有公有构造方法
-getDeclaredConstructor(Class...<?> parameterTypes)|获得该类中与参数类型匹配的构造方法
-getDeclaredConstructors()|获得该类所有构造方法
+| 方法                                               | 用途                                   |
+| -------------------------------------------------- | -------------------------------------- |
+| getConstructor(Class...<?> parameterTypes)         | 获得该类中与参数类型匹配的公有构造方法 |
+| getConstructors()                                  | 获得该类的所有公有构造方法             |
+| getDeclaredConstructor(Class...<?> parameterTypes) | 获得该类中与参数类型匹配的构造方法     |
+| getDeclaredConstructors()                          | 获得该类所有构造方法                   |
 
 ### 3.1.3. 类中方法相关的方法
-方法|用途
---|--
-getMethod(String name, Class...<?> parameterTypes)|获得该类某个公有的方法
-getMethods()|获得该类所有公有的方法
-getDeclaredMethod(String name, Class...<?> parameterTypes)|获得该类某个方法getDeclaredMethods()|获得该类所有方法
+| 方法                                                       | 用途                                 |
+| ---------------------------------------------------------- | ------------------------------------ |
+| getMethod(String name, Class...<?> parameterTypes)         | 获得该类某个公有的方法               |
+| getMethods()                                               | 获得该类所有公有的方法               |
+| getDeclaredMethod(String name, Class...<?> parameterTypes) | 获得该类某个方法getDeclaredMethods() | 获得该类所有方法 |
 
 ### 3.1.4. 类中其他重要的方法
-方法|用途
---|--
-isAnnotation()|如果是注解类型则返回true
-isAnnotationPresent(Class<? extends Annotation> annotationClass)|如果是指定类型注解类型则返回true
-isAnonymousClass()|如果是匿名类则返回true
-isArray()|如果是一个数组类则返回true
-isEnum()|如果是枚举类则返回true
-isInstance(Object obj)|如果obj是该类的实例则返回true
-isInterface()|如果是接口类则返回true
-isLocalClass()|如果是局部类则返回true
-isMemberClass()|如果是内部类则返回true
+| 方法                                                             | 用途                             |
+| ---------------------------------------------------------------- | -------------------------------- |
+| isAnnotation()                                                   | 如果是注解类型则返回true         |
+| isAnnotationPresent(Class<? extends Annotation> annotationClass) | 如果是指定类型注解类型则返回true |
+| isAnonymousClass()                                               | 如果是匿名类则返回true           |
+| isArray()                                                        | 如果是一个数组类则返回true       |
+| isEnum()                                                         | 如果是枚举类则返回true           |
+| isInstance(Object obj)                                           | 如果obj是该类的实例则返回true    |
+| isInterface()                                                    | 如果是接口类则返回true           |
+| isLocalClass()                                                   | 如果是局部类则返回true           |
+| isMemberClass()                                                  | 如果是内部类则返回true           |
 
 ## 3.2. Field类
 1. Field代表类的成员变量(类的属性)
-方法|用途
---|--
-equals(Object obj)|属性与obj相等则返回true
-get(Object obj)|获得obj中对应的属性值
-set(Object obj, Object value)|设置obj中对应属性值
+
+| 方法                          | 用途                    |
+| ----------------------------- | ----------------------- |
+| equals(Object obj)            | 属性与obj相等则返回true |
+| get(Object obj)               | 获得obj中对应的属性值   |
+| set(Object obj, Object value) | 设置obj中对应属性值     |
 
 ## 3.3. Methods类
 1. Methods代表类的方法
-方法|用途
---|--
-invoke(Object obj, Object... args)|传递object对象及参数调用该对象对应的方法
+| 方法                               | 用途                                     |
+| ---------------------------------- | ---------------------------------------- |
+| invoke(Object obj, Object... args) | 传递object对象及参数调用该对象对应的方法 |
 
 ## 3.4. Constructor类
-方法|用途
-newInstance(Object... initargs)|根据传递的参数创建类的对象
+| 方法                           | 用途                       |
+| ------------------------------ | -------------------------- |
+| newInstance(bject... initargs) | 根据传递的参数创建类的对象 |
 
 ## 3.5. 实例
 

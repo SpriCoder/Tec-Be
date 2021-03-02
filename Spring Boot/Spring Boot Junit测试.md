@@ -12,7 +12,8 @@ Spring Junit
 - [4. Junit中出现的问题汇总](#4-junit中出现的问题汇总)
   - [4.1. @Before 和 @After 注解部分不执行](#41-before-和-after-注解部分不执行)
   - [4.2. 总结对比@Before，@BeforeClass，@BeforeEach，@BeforeAll](#42-总结对比beforebeforeclassbeforeeachbeforeall)
-- [5. 参考](#5-参考)
+- [5. 使用Mock完成单元测试](#5-使用mock完成单元测试)
+- [6. 参考](#6-参考)
 
 <!-- /TOC -->
 
@@ -107,7 +108,10 @@ public void test() {
 | 1. 在每个测试方法之前执行。<br> 2. 注解在非静态方法上。<br>3. 可以重新初始化测试方法所需要使用的类的某些属性。 | @Before      | @BeforeEach |
 | 1. 在每个测试方法之后执行。<br> 2. 注解在非静态方法上。<br> 3. 可以回滚测试方法引起的数据库修改。     | @After       | @AfterEach  |
 
+# 5. 使用Mock完成单元测试
+参见参考3
 
-# 5. 参考
+# 6. 参考
 1. <a href = "https://blog.csdn.net/wozaizhe56/article/details/80440452">JUnit5 @Before @After 注解部分不执行</a>
 2. <a href = "https://blog.csdn.net/iexploration/article/details/82023893">@Before, @BeforeClass, @BeforeEach 和 @BeforeAll之间的不同</a>
+3. <a href = "https://zhuanlan.zhihu.com/p/98074553">教你使用Mock完成单元测试</a>
