@@ -88,8 +88,9 @@ IDEA 使用经验
 6. soapUI Plugin
 7. static
 8. Websocket Client
+9. Graph Database support
 
-## 自动生成
+## 15.1. 自动生成
 1. 在类里面 Alt + Insert 来生成getter、setter、consturctor等
 2. 在方法上 Alt + Insert 来生成Test方法
 
