@@ -1,5 +1,8 @@
 Docker 安装 Jenkins
 ---
+By 张洪胤
+
+> 开始前最好，将docker升级到最新版本(至少大于17)
 
 # 1. 安装过程
 1. 首先拉取镜像:`docker pull jenkins`(我安装的是Jenkins 2.275)
@@ -75,15 +78,10 @@ export PATH=$PATH:$MAVEN_HOME/bin
 
 ```xml
 <mirror>
-   <id>huaweicloud</id>
-   <mirrorOf>*,!HuaweiCloudSDK</mirrorOf>
-   <url>https://mirrors.huaweicloud.com/repository/maven/</url>
-</mirror>
-<mirror>
-<id>aliyun</id>
-   <name>aliyun Maven</name>
-   <mirrorOf>*,!HuaweiCloudSDK</mirrorOf>
+   <id>alimaven</id>
+   <name>aliyun maven</name>
    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+   <mirrorOf>central</mirrorOf>
 </mirror>
 ```
 
@@ -115,7 +113,7 @@ apt-get -y install docker-ce
 
 4. 通过输入`docker`来检查是否成功
 5. 授予jenkins用户docker权限：
-   1. 以root用户身份进入jenkins容器：`docker exec -it -u root jenkins`
+   1. 以root用户身份进入jenkins容器：`docker exec -it -u root jenkins /bin/bash`
    2. 查看当前用户情况:`ls -l /var/run/docker.sock`
    3. 授权`jenkins`用户:`chown jenkins: /var/run/docker.sock`
    4. 再次查看用户情况:`ls -l /var/run/docker.sock`
@@ -172,14 +170,33 @@ and the repository exists
 6. 之后选择保存即可
 7. 之后点击`立即构建`来查看效果
 
-# 3. 实用插件
+# 3. GitLab + Jenkins + Spring Boot
+
+## 3.1. 配置GitLab插件和连接
+1. Jenkins需要安装插件GitLab Plugin和GitLab Hook Plugin
+2. 进入系统配置，找到GitLab的配置位置，进行配置
+
+![](img/install/9.png)
+
+3. 注意上面需要的API token需要到GitLab的用户设置中，生成Personal Access Tokens
+4. 填写完成后点击Test Connection，如果显示Success表示配置成功
+5. 完成GitLab的Ssh配置，过程完全类似第二大步中的对应步骤。
+
+## 3.2. 创建项目
+1. 勾选Build when a change is pushed to GitLab. GitLab webhook URL:
+2. 下拉找到点击高级，找到Allowed branches，选择Filter branch by name(一般是master)
+3. 在下拉，来到流水线中，选择Pipeline script from SCM，URL填写GitLab获取的URL，进行测试(注意如果出现`git ls-remote -h -- ssh://git@xxx.git HEAD`，第一次是需要进入容器执行该命令，并输入yes)
+4. 进入GitLab的对应项目仓库，找到settings->integration配置刚刚得到的webhook URL，然后点击Test(模拟一次Push events)，如果返回为403码，则查看参考八
+5. 之后配置好jenkinsfile，然后跟踪构建结果即可。
+
+# 4. 实用插件
 1. <a href = "https://blog.csdn.net/github_39160845/article/details/108960606">Jenkins 嵌入到 Iframe</a>
 2. <a href = "https://www.cnblogs.com/kevingrace/p/6019707.html">Jenkins用户组管理</a>
 
-# 4. 配置Jenkins的分布式构建和部署
+# 5. 配置Jenkins的分布式构建和部署
 1. <a href = "https://blog.csdn.net/achenyuan/article/details/86644954">jenkins分布式构建和部署(master-slave)</a>
 
-# 5. 参考
+# 6. 参考
 1. <a href = "https://www.jenkins.io/zh/doc/book/installing/">Jenkins官方教程</a>
 2. <a href = "https://segon.cn/install-jenkins-using-docker.html">Docker 安装 Jenkins （超详细）</a>
 3. <a href = "https://www.cnblogs.com/ningy1009/p/12665716.html">Jenkins 插件安装失败解决办法</a>
@@ -187,3 +204,4 @@ and the repository exists
 5. <a href = "https://www.jianshu.com/p/c570e0bb4926">Jenkins容器中安装Docker</a>
 6. <a href = "https://blog.csdn.net/zhichuan0307/article/details/108273161">Jenkins持续集成显示pending—Waiting for next available executor</a>
 7. <a href = "https://jenkins-zh.cn/wechat/articles/2019/06/2019-06-14-setup-jenkins-ci-in-30-minutes/">30分钟搞定 Jenkins CI</a>
+8. <a href = "https://www.cnblogs.com/kaerxifa/p/11671961.html">gitlab webhook jenkins 403问题解决方案</a>
