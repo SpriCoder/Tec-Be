@@ -189,14 +189,44 @@ and the repository exists
 4. 进入GitLab的对应项目仓库，找到settings->integration配置刚刚得到的webhook URL，然后点击Test(模拟一次Push events)，如果返回为403码，则查看参考八
 5. 之后配置好jenkinsfile，然后跟踪构建结果即可。
 
-# 4. 实用插件
+# 4. Jenkins 使用Pipeline集成Cobertura
+1. jenkins首先安装插件`Cobertura Plugin`
+2. 在pom文件的build->plugins下添加如下的plugin以生成xml格式的覆盖率检查报告
+
+```xml
+<plugin>
+   <groupId>org.codehaus.mojo</groupId>
+   <artifactId>cobertura-maven-plugin</artifactId>
+
+   <configuration>
+      <formats>
+         <format>xml</format>
+         <format>html</format>
+      </formats>
+      <check/>
+   </configuration>
+</plugin>
+```
+
+2. 使用:`mvn cobertura:cobertura`生成相应的测试报告，默认路径为`**/target/site/cobertura/`
+3. 在流水线中添加如下post以添加覆盖报告到Jenkins UI。
+
+```pipeline
+post {
+   always {
+      step([$class: 'CoberturaPublisher', autoUpdateHealth: false, autoUpdateStability: false, coberturaReportFile: '**/target/site/cobertura/coverage.xml', failUnhealthy: false, failUnstable: false, maxNumberOfBuilds: 0, onlyStable: false, sourceEncoding: 'ASCII', zoomCoverageChart: false, enableNewApi: true])
+   }
+}
+```
+
+# 5. 实用插件
 1. <a href = "https://blog.csdn.net/github_39160845/article/details/108960606">Jenkins 嵌入到 Iframe</a>
 2. <a href = "https://www.cnblogs.com/kevingrace/p/6019707.html">Jenkins用户组管理</a>
 
-# 5. 配置Jenkins的分布式构建和部署
+# 6. 配置Jenkins的分布式构建和部署
 1. <a href = "https://blog.csdn.net/achenyuan/article/details/86644954">jenkins分布式构建和部署(master-slave)</a>
 
-# 6. 参考
+# 7. 参考
 1. <a href = "https://www.jenkins.io/zh/doc/book/installing/">Jenkins官方教程</a>
 2. <a href = "https://segon.cn/install-jenkins-using-docker.html">Docker 安装 Jenkins （超详细）</a>
 3. <a href = "https://www.cnblogs.com/ningy1009/p/12665716.html">Jenkins 插件安装失败解决办法</a>

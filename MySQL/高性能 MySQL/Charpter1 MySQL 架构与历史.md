@@ -117,6 +117,16 @@ MySQL 架构与历史
 ## 3.5. MySQL的事务
 1. MySQL提供了两种事务型
 
-
 ### 3.5.1. 自动提交(AUTOCOMMIT)
-1. 
+1. MySQL默认采用自动提交(AUTOCOMMIT)模式，如果不是显式的开始一个事务则每个查询都会被当做一个事务执行提交。
+2. 可以通过设置AUTOCOMMIT变量来启用或禁用自动提交模式。
+   1. 1/ON表示启用
+   2. 0/OFF表示禁用
+3. 修改AUTOCOMMIT对非事务型的表(MyISAM或内存表)，不会有任何影响。
+4. 部分命令前会强制执行COMMIT提交当前的活动事务，比如在DDL(数据定义语言)中，会导致大量数据改变的操作(Alter Table、Lock TABLES)
+5. 设置隔离级别：`SET TRANSACTION ISOLATION LEVEL`设置隔离级别，MySQL可以识别所有的4个ANSI隔离级别，InnoDB引擎也支持所有的隔离级别。
+
+### 3.5.2. 在事务中混合使用存储引擎
+1. MySQL服务器层不管理事务，事务型和非事务型的表(例如InnoDB和MyISAM表)，在正常提交的情况下不会有问题。
+2. 非事务型的表上执行事务相关操作的时候，MySQL通常不会发出提醒。
+3. 48页
