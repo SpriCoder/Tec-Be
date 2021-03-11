@@ -189,7 +189,7 @@ and the repository exists
 4. 进入GitLab的对应项目仓库，找到settings->integration配置刚刚得到的webhook URL，然后点击Test(模拟一次Push events)，如果返回为403码，则查看参考八
 5. 之后配置好jenkinsfile，然后跟踪构建结果即可。
 
-# 4. Jenkins 使用Pipeline集成Cobertura
+# 4. Jenkins 使用Pipeline集成Cobertura(不支持Java 1.8)
 1. jenkins首先安装插件`Cobertura Plugin`
 2. 在pom文件的build->plugins下添加如下的plugin以生成xml格式的覆盖率检查报告
 
@@ -219,14 +219,19 @@ post {
 }
 ```
 
-# 5. 实用插件
+# 5. Jenkins 使用pipeline集成jacoco
+1. 在jenkins中安装`jacoco`插件
+2. 在html发布后发现了403问题，在script界面运行`System.clearProperty("hudson.model.DirectoryBrowserSupport.CSP")`
+3. 之后**重新构建**并发布HTML报告即可
+
+# 6. 实用插件
 1. <a href = "https://blog.csdn.net/github_39160845/article/details/108960606">Jenkins 嵌入到 Iframe</a>
 2. <a href = "https://www.cnblogs.com/kevingrace/p/6019707.html">Jenkins用户组管理</a>
 
-# 6. 配置Jenkins的分布式构建和部署
+# 7. 配置Jenkins的分布式构建和部署
 1. <a href = "https://blog.csdn.net/achenyuan/article/details/86644954">jenkins分布式构建和部署(master-slave)</a>
 
-# 7. 参考
+# 8. 参考
 1. <a href = "https://www.jenkins.io/zh/doc/book/installing/">Jenkins官方教程</a>
 2. <a href = "https://segon.cn/install-jenkins-using-docker.html">Docker 安装 Jenkins （超详细）</a>
 3. <a href = "https://www.cnblogs.com/ningy1009/p/12665716.html">Jenkins 插件安装失败解决办法</a>
@@ -235,3 +240,4 @@ post {
 6. <a href = "https://blog.csdn.net/zhichuan0307/article/details/108273161">Jenkins持续集成显示pending—Waiting for next available executor</a>
 7. <a href = "https://jenkins-zh.cn/wechat/articles/2019/06/2019-06-14-setup-jenkins-ci-in-30-minutes/">30分钟搞定 Jenkins CI</a>
 8. <a href = "https://www.cnblogs.com/kaerxifa/p/11671961.html">gitlab webhook jenkins 403问题解决方案</a>
+9. <a href = "https://www.cnblogs.com/qiaoyeye/p/7737565.html">jenkins安全内容配置策略</a>
