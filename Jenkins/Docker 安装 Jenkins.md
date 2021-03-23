@@ -8,26 +8,55 @@ By 张洪胤
 1. 首先拉取镜像:`docker pull jenkins`(我安装的是Jenkins 2.275)
 2. 创建本地数据卷:`mkdir -p /data/jenkins_home/`
 3. 修改用户授权:`chown -R 1000:1000 /data/jenkins_home/`
-4. 启动容器:`docker run -d --name jenkins -p 7900:8080 -p 50000:50000 -v /data/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins`
+4. 启动容器:
+5. `docker run -d --name jenkins -p 7900:8080 -p 50000:50000 -v /data/jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins`
    1. 这里挂载了物理盘映射
    2. 还挂载了docker映射
-5. 访问对应网址:`xxx:7900`
-6. 获取初始管理员密码(两种方式，因为映射了本地逻辑卷)
+6. 访问对应网址:`xxx:7900`
+7. 获取初始管理员密码(两种方式，因为映射了本地逻辑卷)
    1. `docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword`
    2. 或者在进入容器后(`docker exec -it jenkins /bin/bash`)：`cat /data/jenkins_home/secrets/initialAdminPassword`
-7. 选择安装推荐的插件等待即可
-8. 按照流程创建管理员账户
-9. 根据之前的情况创建实例，即完成
+8. 选择安装推荐的插件等待即可
+9. 按照流程创建管理员账户
+10. 根据之前的情况创建实例，即完成
 
-# 2. Jenkins流水线 + Docker + Maven + Github webhooks + Spring boot
+# 2. Jenkins 安装 npm
+1. 首先以root权限进入容器:`docker exec -it -u root jenkins bash`
 
-## 2.1. 需要的插件和配置
+## 2.1. 替换容器的源
+1. 备份：`cp /etc/apt/sources.list /etc/apt/sources.list.bak`
+2. 查看系统版号:`lsb_release -c`，并且将下文中替换文件中的对应位置进行修改
+3. 修改：`/etc/apt/source.list`，如果无法拉取：`sudo apt install apt-transport-https ca-certificates`，vim中使用shift+insert插入
+4. `W: Unable to read /etc/apt/preferences.d/ - DirectoryExists (2: No such file or directory)`:这时新建此文件夹即可mkdir /etc/apt/preferences.d
 
-### 2.1.1. 插件
+```
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free
+```
+
+5. 添加node源：`curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -`
+
+## 2.2. 安装nodejs和npm
+2. 然后安装node.js:`apt-get install nodejs`，一定要先更新源
+3. 然后安装npm:`apt-get install npm`，
+4. 之后替换npm源:`npm config set registry http://registry.npm.taobao.org/`
+
+# 3. Jenkins流水线 + Docker + Maven + Github webhooks + Spring boot
+
+## 3.1. 需要的插件和配置
+
+### 3.1.1. 插件
 1. Blue Ocean
 2. Maven Integration
 
-### 2.1.2. 配置
+### 3.1.2. 配置
 1. 查看容器的全部信息:`docker inspect jenkins`，其中的Env项中包含了`JAVA_HOME`等环境信息，如下所示
 
 ```
@@ -62,7 +91,7 @@ By 张洪胤
 
 ![](img/install/4.png)
 
-### 2.1.3. 安装maven
+### 3.1.3. 安装maven
 1. 同样的进入容器:`docker exec -it -u root jenkins bash`
 2. 下载maven压缩包：`wget https://mirrors.aliyun.com/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz`
 3. 解压缩maven安装包：`tar -zvxf apache-maven-3.6.3-bin.tar.gz`
@@ -90,7 +119,7 @@ export PATH=$PATH:$MAVEN_HOME/bin
 
 ![](img/install/3.png)
 
-### 2.1.4. 配置Jenkins使用Docker
+### 3.1.4. 配置Jenkins使用Docker
 1. 之前在创建容器的时候已经完成了sock的映射
 2. 登录进入jenkins容器:`docker exec -it -u root jenkins bash`
 3. 安装docker client:
@@ -119,18 +148,18 @@ apt-get -y install docker-ce
    4. 再次查看用户情况:`ls -l /var/run/docker.sock`
    5. 检查`docker ps`之类的命令是否可以使用
 
-### 2.1.5. 配置Jenkins中的Git SSH
+### 3.1.5. 配置Jenkins中的Git SSH
 1. 进入jenkins容器:`docker exec -it jenkins /bin/bash`
 2. 生成SSH密钥:`ssh-keygen`，一路回车使用默认值
 3. 查找密钥：`cat /var/jenkins_home/.ssh/id_rsa.pub`
 4. 然后登录Github，在`settings->SSH and GPG keys`中添加密钥。
 
-### 2.1.6. Github添加Webhook
+### 3.1.6. Github添加Webhook
 1. 进入想要部署的仓库，`settings -> webhook`，选择`Add Webhook`
 2. 设置payload_url为jenkins对应地址:`xxx(jenkins访问网址)/github-webhook/`
 3. 选择`Just the push event.`和`Active`后保存即可
 
-### 2.1.7. 配置主从节点
+### 3.1.7. 配置主从节点
 > 避免出现如下报错：pending—Waiting for next available executor
 
 1. 进入对应位置:`系统管理 -> 节点管理`
@@ -138,7 +167,7 @@ apt-get -y install docker-ce
 
 ![](img/install/6.png)
 
-## 2.2. 使用流水线新建任务
+## 3.2. 使用流水线新建任务
 1. 点击`新建任务`，新建一个名为`Jenkins-Demo`的流水线任务
 
 ![](img/install/5.png)
@@ -170,9 +199,9 @@ and the repository exists
 6. 之后选择保存即可
 7. 之后点击`立即构建`来查看效果
 
-# 3. GitLab + Jenkins + Spring Boot
+# 4. GitLab + Jenkins + Spring Boot
 
-## 3.1. 配置GitLab插件和连接
+## 4.1. 配置GitLab插件和连接
 1. Jenkins需要安装插件GitLab Plugin和GitLab Hook Plugin
 2. 进入系统配置，找到GitLab的配置位置，进行配置
 
@@ -182,14 +211,14 @@ and the repository exists
 4. 填写完成后点击Test Connection，如果显示Success表示配置成功
 5. 完成GitLab的Ssh配置，过程完全类似第二大步中的对应步骤。
 
-## 3.2. 创建项目
+## 4.2. 创建项目
 1. 勾选Build when a change is pushed to GitLab. GitLab webhook URL:
 2. 下拉找到点击高级，找到Allowed branches，选择Filter branch by name(一般是master)
 3. 在下拉，来到流水线中，选择Pipeline script from SCM，URL填写GitLab获取的URL，进行测试(注意如果出现`git ls-remote -h -- ssh://git@xxx.git HEAD`，第一次是需要进入容器执行该命令，并输入yes)
 4. 进入GitLab的对应项目仓库，找到settings->integration配置刚刚得到的webhook URL，然后点击Test(模拟一次Push events)，如果返回为403码，则查看参考八
 5. 之后配置好jenkinsfile，然后跟踪构建结果即可。
 
-# 4. Jenkins 使用Pipeline集成Cobertura(不支持Java 1.8)
+# 5. Jenkins 使用Pipeline集成Cobertura(不支持Java 1.8)
 1. jenkins首先安装插件`Cobertura Plugin`
 2. 在pom文件的build->plugins下添加如下的plugin以生成xml格式的覆盖率检查报告
 
@@ -219,19 +248,19 @@ post {
 }
 ```
 
-# 5. Jenkins 使用pipeline集成jacoco
+# 6. Jenkins 使用pipeline集成jacoco
 1. 在jenkins中安装`jacoco`插件
 2. 在html发布后发现了403问题，在script界面运行`System.clearProperty("hudson.model.DirectoryBrowserSupport.CSP")`
 3. 之后**重新构建**并发布HTML报告即可
 
-# 6. 实用插件
+# 7. 实用插件
 1. <a href = "https://blog.csdn.net/github_39160845/article/details/108960606">Jenkins 嵌入到 Iframe</a>
 2. <a href = "https://www.cnblogs.com/kevingrace/p/6019707.html">Jenkins用户组管理</a>
 
-# 7. 配置Jenkins的分布式构建和部署
+# 8. 配置Jenkins的分布式构建和部署
 1. <a href = "https://blog.csdn.net/achenyuan/article/details/86644954">jenkins分布式构建和部署(master-slave)</a>
 
-# 8. 参考
+# 9. 参考
 1. <a href = "https://www.jenkins.io/zh/doc/book/installing/">Jenkins官方教程</a>
 2. <a href = "https://segon.cn/install-jenkins-using-docker.html">Docker 安装 Jenkins （超详细）</a>
 3. <a href = "https://www.cnblogs.com/ningy1009/p/12665716.html">Jenkins 插件安装失败解决办法</a>
