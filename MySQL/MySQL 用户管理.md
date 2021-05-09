@@ -15,7 +15,7 @@ MySQL 用户管理
 # 3. 为用户分配权限
 
 ## 3.1. 具体数据库权限
-> grant all privileges on \`test_db\`.* to 'username'@'localhost' identified by '123456';
+> grant all privileges on \`test_db\`.* to 'username'@'localhost';
 
 1. 授权给用户username，数据库test_db相关的所有权限，并且该用户username在所有网络IP上都有权限，%是指没有网络限制
 2. 权限可以细分为：`SELECT`,`INSERT`,`UPDATE`,`DELETE`,`CREATE`,`DROP`,更多权限见参考二
