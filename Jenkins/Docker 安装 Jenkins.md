@@ -26,19 +26,20 @@ By 张洪胤
 ## 2.1. 替换容器的源
 1. 备份：`cp /etc/apt/sources.list /etc/apt/sources.list.bak`
 2. 查看系统版号:`lsb_release -c`，并且将下文中替换文件中的对应位置进行修改
-3. 修改：`/etc/apt/source.list`，如果无法拉取：`sudo apt install apt-transport-https ca-certificates`，vim中使用shift+insert插入
+3. 修改：`vim /etc/apt/sources.list`，如果无法拉取：`sudo apt install apt-transport-https ca-certificates`，vim中使用shift+insert插入
 4. `W: Unable to read /etc/apt/preferences.d/ - DirectoryExists (2: No such file or directory)`:这时新建此文件夹即可mkdir /etc/apt/preferences.d
+5. 如果没有vim，先`apt update`，然后`apt install vim`
 
 ```
 # 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-updates main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ stretch-backports main contrib non-free
-deb https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free
-# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security stretch/updates main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-updates main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian/ buster-backports main contrib non-free
+deb https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/debian-security buster/updates main contrib non-free
 ```
 
 5. 添加node源：`curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -`
@@ -215,7 +216,7 @@ and the repository exists
 1. 勾选Build when a change is pushed to GitLab. GitLab webhook URL:
 2. 下拉找到点击高级，找到Allowed branches，选择Filter branch by name(一般是master)
 3. 在下拉，来到流水线中，选择Pipeline script from SCM，URL填写GitLab获取的URL，进行测试(注意如果出现`git ls-remote -h -- ssh://git@xxx.git HEAD`，第一次是需要进入容器执行该命令，并输入yes)
-4. 进入GitLab的对应项目仓库，找到settings->integration配置刚刚得到的webhook URL，然后点击Test(模拟一次Push events)，如果返回为403码，则查看参考八
+4. 进入GitLab的对应项目仓库，找到settings->integration配置刚刚得到的webhook URL(注意看提示)，然后点击Test(模拟一次Push events)，如果返回为403码，则查看参考八
 5. 之后配置好jenkinsfile，然后跟踪构建结果即可。
 
 # 5. Jenkins 使用Pipeline集成Cobertura(不支持Java 1.8)
