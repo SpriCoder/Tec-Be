@@ -8,7 +8,8 @@ Git 远程分支操作
 1. `git init`:新建一个仓库
 
 ## 1.2. 建立远程连接
-1. `git remote add origin git@xxxx`:将本地仓库和远程仓库相关联
+1. `git remote add origin git@xxxx`:将本地仓库和远程仓库相关联。
+2. `git remote -v`：查看远程库。
 
 ## 1.3. 拉取远程分支到本地
 1. `git fetch origin branch-name`:拉取远程名字为branch-name的分支到本地
@@ -19,7 +20,8 @@ Git 远程分支操作
 
 # 3. 参考
 1. <a href = "https://www.jianshu.com/p/542109f0e998">github:拉取远程分支到本地</a>
-2. <a href = "https://www.jianshu.com/p/94a64b480f9b">git提交到github远程分支</>
+2. <a href = "https://www.jianshu.com/p/94a64b480f9b">git提交到github远程分支</a>
+3. <a href = "https://blog.csdn.net/u013716535/article/details/107254267">[Git]保持本地和fork的原仓库代码一致</a>
    
 
 # 4. 完整操作
