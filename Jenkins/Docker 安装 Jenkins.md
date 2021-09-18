@@ -231,7 +231,6 @@ and the repository exists
    <configuration>
       <formats>
          <format>xml</format>
-         <format>html</format>
       </formats>
       <check/>
    </configuration>
